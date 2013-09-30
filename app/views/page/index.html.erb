@@ -1,11 +1,1 @@
-<h3>Hello world! <span class="label label-default">Bootstrap test</span></h3>
-
-<% if user_signed_in? || admin_signed_in? %>
-    <%= link_to("Logout", destroy_user_session_path, :method => :delete) %>  |
-    <%= link_to("Admin page", home_path) %>
-<% else %>
-    <%= link_to 'Sign in', "user/sign_in" %> |
-    <%= link_to 'Sign up', "user/sign_up" %> |
-    <%= link_to 'Admin area', "/admins/sign_in" %> |
-<% end %>
-
+<center><h3>Index Page</h3></center>
