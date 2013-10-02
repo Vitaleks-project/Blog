@@ -20,7 +20,7 @@
               <li><%= link_to("Users", users_path) %></li>
               <li><a href="/home">Admin page</a></li>
             <% end %>
-            <li><%= link_to "My account", current_user %></li>
+            <li><%= link_to "My account", current_user unless admin_signed_in? %></li>
             <li><%= link_to("Logout", destroy_user_session_path, :method => :delete) %></li>
           <% else %>
             <li><a href="user/sign_up">Sign up</a></li>
