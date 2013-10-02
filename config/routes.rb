@@ -1,6 +1,7 @@
 Blog::Application.routes.draw do
   devise_for :admins
   devise_for :user
+  resources :users
 
   match "home", :to => 'admin#home'
   root :to => 'page#index'
