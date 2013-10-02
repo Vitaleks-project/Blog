@@ -4,7 +4,7 @@
   <title>Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application", :madia => "all" %>
   <%= csrf_meta_tags %>
   <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 </head>
@@ -34,6 +34,7 @@
         <!--Sidebar content-->
       </div>
       <div class="span10" style="background-color: #ececec; border-radius: 5px; margin-top: -17px;">
+        <%= render partial: "layouts/flash_messages", flash: flash %>
         <%= yield %>
       </div>
     </div>
