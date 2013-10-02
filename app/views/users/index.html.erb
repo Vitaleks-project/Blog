@@ -1,0 +1,7 @@
+<center><h3>Users list</h3></center>
+<div id="users"><% @users.each do |user| %>
+  <%= user.id %>
+  <%=link_to user.email, user %>
+  <br/>
+<% end %>
+</div>
