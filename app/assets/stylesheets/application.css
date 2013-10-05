@@ -11,3 +11,26 @@
  *= require_self
  *= require_tree .
  */
+.cleaner { clear: both }
+.float_left { float: left }
+.float_right { float: right }
+.center { text-align: center;}
+.block {display: block;}
+.invisible {display: none;}
+*{
+    box-sizing: border-box;
+    moz-box-sizing: border-box;
+    webkit-box-sizing: border-box;
+    outline: none;
+}
+
+p, h1, h2, h3, h4, h5, h6, a {
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5, h6{
+    font-weight: normal;
+}
+h1{
+    font-size: 1.5em;
+}
