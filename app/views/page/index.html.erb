@@ -1,1 +1,9 @@
 <center><h3>Index Page</h3></center>
+<% @posts.each do |post| %>
+      <%= post.id %>
+      <%= post.title %>
+      <%= post.text %>
+      <%= link_to "Delete",post, method: :delete,
+                data: { confirm: "You sure?" } if current_admin %>
+    </br>
+<% end %>
