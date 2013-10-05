@@ -3,6 +3,7 @@ Blog::Application.routes.draw do
   devise_for :user
   resources :users
 
+  resources :posts, only: [:new, :create, :destroy]
   match "home", :to => 'admin#home'
   root :to => 'page#index'
   # The priority is based upon order of creation:
@@ -23,7 +24,7 @@ Blog::Application.routes.draw do
   #   resources :products do
   #     member do
   #       get 'short'
-  #       post 'toggle'
+  #       posts 'toggle'
   #     end
   #
   #     collection do
