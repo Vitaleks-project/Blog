@@ -1,7 +1,7 @@
 <div class="index-container">
     <% @posts.each do |post| %>
         <div class="post-container">
-          <%= post.title %><br/>
+          <%=link_to post.title, post %><br/>
           <%= post.text %>
           <%= link_to "Delete",post, :class => 'right', method: :delete,
                     data: { confirm: "You sure?" } if current_admin %>

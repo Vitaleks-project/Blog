@@ -5,6 +5,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def create
     @post = current_admin.posts.build(params[:post])
     if @post.save
