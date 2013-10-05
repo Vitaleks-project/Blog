@@ -1,9 +1,11 @@
-<center><h3>Index Page</h3></center>
-<% @posts.each do |post| %>
-      <%= post.id %>
-      <%= post.title %>
-      <%= post.text %>
-      <%= link_to "Delete",post, method: :delete,
-                data: { confirm: "You sure?" } if current_admin %>
-    </br>
-<% end %>
+<div class="index-container">
+    <% @posts.each do |post| %>
+        <div class="post-container">
+          <%= post.title %><br/>
+          <%= post.text %>
+          <%= link_to "Delete",post, :class => 'right', method: :delete,
+                    data: { confirm: "You sure?" } if current_admin %>
+        </div>
+        <br/>
+    <% end %>
+</div>

@@ -1,3 +1,16 @@
 // Place all the styles related to the page controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.index-container{
+  padding-left: 15%;
+  padding-top: 1%;
+}
+.post-container{
+  font-family: 'Philosopher', sans-serif;
+  font-size: 1.1em;
+  width: 80%;
+  height: 25%;
+  background-color: #e2e2e2;
+  border-radius: 5px;
+  padding: 1%;
+}

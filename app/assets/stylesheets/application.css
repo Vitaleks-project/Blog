@@ -12,8 +12,8 @@
  *= require_tree .
  */
 .cleaner { clear: both }
-.float_left { float: left }
-.float_right { float: right }
+.left { float: left }
+.right { float: right }
 .center { text-align: center;}
 .block {display: block;}
 .invisible {display: none;}
