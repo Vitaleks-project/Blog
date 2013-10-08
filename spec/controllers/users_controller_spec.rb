@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe UsersController do
+  login_user
 
-  describe "GET 'index'" do
-    it "returns http success" do
+  describe "Post" do
+    it "index" do
       get 'index'
       response.should be_success
     end
   end
-
 end
