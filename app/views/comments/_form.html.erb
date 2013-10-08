@@ -1,0 +1,9 @@
+<%= form_for(@comment) do |c| %>
+    <div>
+      <%= c.label :comment %>
+      <%= c.text_field :comment, :autofocus => true %>
+    </div>
+    <div><%= c.hidden_field :commentable_id  %></div>
+    <div><%= c.hidden_field :commentable_type %></div>
+    <div><%= c.submit "Submit" %></div>
+<% end %>

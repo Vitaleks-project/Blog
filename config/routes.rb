@@ -4,6 +4,7 @@ Blog::Application.routes.draw do
   resources :users
 
   resources :posts, only: [:show, :new, :create, :destroy]
+  resources :comments, :only => [:create]
   match "home", :to => 'admin#home'
   root :to => 'page#index'
   # The priority is based upon order of creation:

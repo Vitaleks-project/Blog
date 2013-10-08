@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_admin!
+  before_filter :authenticate_admin!, :only => [:create, :destroy, :new]
 
   def new
     @post = Post.new
@@ -7,6 +7,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = @post.comments.build
+    @post.comments.pop
   end
 
   def create
