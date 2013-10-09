@@ -6,7 +6,12 @@
           Tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 
           <%= link_to "Delete",post, :class => 'right', method: :delete,
-                    data: { confirm: "You sure?" } if current_admin %>
+                    data: { confirm: "You sure?" } if current_admin %><br/>
+          Created: <%= time_ago_in_words(post.created_at) %> ago.<br/>
+
+          <% if (Date.today.day == post.created_at.to_date.day)%>
+              <span class="label">New</span>
+          <% end %>
         </div>
         <br/>
     <% end %>
