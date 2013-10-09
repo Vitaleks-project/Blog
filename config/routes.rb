@@ -3,6 +3,7 @@ Blog::Application.routes.draw do
   devise_for :user
   resources :users
 
+  get 'tags/:tag', to: 'page#index', as: :tag
   resources :posts, only: [:show, :new, :create, :destroy]
   resources :comments, :only => [:create]
   match "home", :to => 'admin#home'

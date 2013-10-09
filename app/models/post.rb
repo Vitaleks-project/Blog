@@ -1,6 +1,9 @@
 class Post < ActiveRecord::Base
-  attr_accessible :text, :title, :admin_id
+  attr_accessible :text, :title, :admin_id, :tag_list
+  acts_as_taggable
   acts_as_commentable
+
+  TAGS = ["Javascript", "Ruby", "Ruby on Rails", "Git", "Jquery", "CSS", "HTML"]
 
   belongs_to :admin
   validates :admin_id, presence: true

@@ -8,6 +8,9 @@
       <div><%= post.label :text %><br />
         <%= post.text_field :text, :row => 6  %></div>
 
+      <div><%= post.label :tag_list, "Tags" %><br />
+        <%= post.select :tag_list, Post::TAGS %></div>
+
       <div><%= post.submit "Create" %></div>
   <% end %>
 </center>

@@ -1,8 +1,10 @@
-<div class="index-container">
+<div class="index-container" xmlns="http://www.w3.org/1999/html">
     <% @posts.each do |post| %>
         <div class="post-container">
           <%=link_to post.title, post %><br/>
-          <%= post.text %>
+          <%= post.text %><br/>
+          Tags: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+
           <%= link_to "Delete",post, :class => 'right', method: :delete,
                     data: { confirm: "You sure?" } if current_admin %>
         </div>
