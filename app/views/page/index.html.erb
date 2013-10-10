@@ -1,18 +1,3 @@
-<div class="index-container" xmlns="http://www.w3.org/1999/html">
-    <% @posts.each do |post| %>
-        <div class="post-container">
-          <%=link_to post.title, post %><br/>
-          <%= post.text %><br/>
-          Category: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-
-          <%= link_to "Delete",post, :class => 'right', method: :delete,
-                    data: { confirm: "You sure?" } if current_admin %><br/>
-          <small class="muted"><div class="right">Created: <%= time_ago_in_words(post.created_at) %> ago.</div></small><br/>
-
-          <% if (Date.today.day == post.created_at.to_date.day)%>
-              <span class="label">New</span>
-          <% end %>
-        </div>
-        <br/>
-    <% end %>
+<div id="posts">
+  <%= render 'posts' %>
 </div>

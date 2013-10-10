@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'acts_as_commentable', '3.0.1'
 gem 'acts-as-taggable-on'
+gem 'will_paginate'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
