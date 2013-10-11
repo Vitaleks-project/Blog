@@ -6,7 +6,7 @@ Blog::Application.routes.draw do
   resources :users
 
   get 'tags/:tag', to: 'page#index', as: :tag
-  resources :posts, only: [:show, :new, :create, :destroy]
+  resources :posts
   resources :comments, :only => [:create, :destroy]
   match "home", :to => 'admin#home'
   root :to => 'page#index'
