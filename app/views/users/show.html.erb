@@ -1,3 +1,8 @@
 <%= link_to "Edit my profile", edit_user_registration_path, :class => 'btn btn-small' %><br/>
+<% if @user.image? %>
+    <%= image_tag @user.image, :size => '200x200' %>
+<% else %>
+    <%= image_tag ("no.png"),  :size => '200x200' %>
+<% end %><br/>
 Email: <%= @user.email %></br>
 Name:  <%= @user.name %>
