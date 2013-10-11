@@ -14,4 +14,12 @@ class CommentsController < ApplicationController
       redirect_to root_url, :alert => "You can't do that."
     end
   end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @commentable = @comment.commentable
+    if @comment.destroy
+      redirect_to @commentable
+    end
+  end
 end

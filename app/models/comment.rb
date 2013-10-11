@@ -4,7 +4,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :commentable, :polymorphic => true
 
-  default_scope :order => 'created_at ASC'
+  default_scope order: 'comments.created_at DESC'
 
   def self.find_comments_by_user(user)
     where(["user_id = ?", user.id]).order("created_at DESC")

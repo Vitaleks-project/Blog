@@ -5,7 +5,7 @@ Blog::Application.routes.draw do
 
   get 'tags/:tag', to: 'page#index', as: :tag
   resources :posts, only: [:show, :new, :create, :destroy]
-  resources :comments, :only => [:create]
+  resources :comments, :only => [:create, :destroy]
   match "home", :to => 'admin#home'
   root :to => 'page#index'
   # The priority is based upon order of creation:

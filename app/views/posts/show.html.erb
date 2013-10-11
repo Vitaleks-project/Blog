@@ -1,8 +1,14 @@
 <h4><%= @post.title %></h4>
 <%= @post.text %>
- </br>
 <hr>
-    <%  for comment in @post.comments  %>
-        <%= comment.comment  %><br/>
-    <% end %>
+<%  for comment in @post.comments  %>
+    <div class="well well-small">
+      <div class="right"><%= link_to "Delete", comment, :class => 'right', method: :delete,
+                                                        data: { confirm: "You sure?" } if current_admin %></div>
+      <%= comment.comment %>
+      <div class="right muted">
+        <%= comment.created_at.to_date %>
+      </div>
+    </div>
+<% end %>
 <%= render 'comments/form' if user_signed_in? || admin_signed_in? %>
