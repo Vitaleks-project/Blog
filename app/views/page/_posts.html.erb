@@ -2,7 +2,6 @@
   <% @posts.each do |post| %>
       <div class="post-container">
         <%=link_to post.title, post %><br/>
-        <%= post.text %><br/>
         Category: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 
         <%= link_to "Delete",post, :class => 'right', method: :delete,

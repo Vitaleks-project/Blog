@@ -1,3 +1,4 @@
+<%= javascript_include_tag "ckeditor/init"%>
 <center><h2>Create posts</h2>
 
   <%= form_for(@post) do |post| %>
@@ -5,11 +6,11 @@
       <div><%= post.label :title %><br />
         <%= post.text_field :title, :autofocus => true %></div>
 
-      <div><%= post.label :text %><br />
-        <%= post.text_field :text, :row => 6  %></div>
-
       <div><%= post.label :tag_list, "Tags" %><br />
         <%= post.select :tag_list, Post::TAGS %></div>
+
+      <div><%= post.label :text %><br />
+        <%= post.cktext_area :text, :cols => 40, :ckeditor => {:toolbar => "mini"} %></div>
 
       <div><%= post.submit "Create" %></div>
   <% end %>
