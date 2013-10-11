@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
 
   belongs_to :admin
   validates :admin_id, presence: true
+  validates :title, presence: true
+  validates :text, presence: true
   has_many :comments, :as => :commentable, :dependent => :destroy
 
   def comments_ordered_by_submitted

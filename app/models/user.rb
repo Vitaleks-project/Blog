@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
 
   has_many :comments, :as => :commentable, :dependent => :destroy
+  validates :email, presence: true
 end
