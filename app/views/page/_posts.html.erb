@@ -12,6 +12,7 @@
         <% if (Date.today.day == post.created_at.to_date.day)%>
             <span class="label">New</span>
         <% end %>
+        <div class="muted"><small>Comment: <%= post.comments.count %></small></div>
       </div>
       <br/>
   <% end %>
