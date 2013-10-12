@@ -9,6 +9,7 @@ gem 'acts-as-taggable-on'
 gem 'will_paginate'
 gem 'ckeditor'
 gem 'paperclip'
+gem 'turbolinks'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
