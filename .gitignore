@@ -8,7 +8,6 @@ db/schema.rb
 public/system
 public/sitemap
 public/assets
-public/uploads
 public/ckeditor_assets/pictures
 tmp/**/*
 .DS_Store
