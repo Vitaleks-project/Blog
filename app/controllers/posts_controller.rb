@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_filter :authenticate_admin!, :only => [:create, :destroy, :new]
+  before_filter :log_impression, :only=> [:show]
 
   def new
     @post = Post.new
@@ -38,5 +39,14 @@ class PostsController < ApplicationController
   def destroy
     Post.find(params[:id]).destroy
     redirect_to :back
+  end
+
+  def log_impression
+    @post = Post.find(params[:id])
+    if admin_signed_in?
+      @post.impressions.create(ip_address: request.remote_ip, user_id: current_admin.id)
+    else
+      @post.impressions.create(ip_address: request.remote_ip, user_id: current_user.id)
+    end
   end
 end

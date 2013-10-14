@@ -10,6 +10,15 @@ class Post < ActiveRecord::Base
   validates :title, presence: true
   validates :text, presence: true
   has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :impressions, :as=>:impressionable
+
+  def impression_count
+    impressions.size
+  end
+
+  def unique_impression_count
+    impressions.group(:ip_address).size
+  end
 
   def comments_ordered_by_submitted
     Comment.find_comments_for_commentable(self.class.name, id)

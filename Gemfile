@@ -10,6 +10,7 @@ gem 'will_paginate'
 gem 'ckeditor'
 gem 'paperclip'
 gem 'turbolinks'
+gem 'impressionist'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
