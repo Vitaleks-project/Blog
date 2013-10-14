@@ -45,8 +45,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if admin_signed_in?
       @post.impressions.create(ip_address: request.remote_ip, user_id: current_admin.id)
-    else
+    elsif user_signed_in?
       @post.impressions.create(ip_address: request.remote_ip, user_id: current_user.id)
+    elsif(!user_signed_in? || !admin_signed_in?)
+      @post.impressions.create(ip_address: nil, user_id: nil)
     end
   end
 end
