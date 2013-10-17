@@ -1,0 +1,31 @@
+<center><h2>Edit club</h2>
+
+  <%= form_for(@club) do |club| %>
+
+      <div><%= club.label :clubname, "Name club" %><br />
+        <%= club.text_field :clubname, :autofocus => true %></div>
+
+      <div><%= club.label :stadiumname, "Stadium name" %><br />
+        <%= club.text_field :stadiumname %></div>
+
+      <div><%= club.label :year_of_foundation, "Year of foundation" %><br />
+        <%= club.text_field :year_of_foundation %></div>
+
+      <div><%= club.label :coach, "Coach" %><br />
+        <%= club.text_field :coach %></div>
+
+      <div><%= club.label :uniq_title, "Uniq title" %><br />
+        <%= club.text_field :uniq_title %></div>
+
+      <div><%= club.label :description, "Description" %><br />
+        <%= club.text_area :description, :rows => 6 %></div>
+
+      <div><%= club.label :logo_stadium, "Photo Stadium" %><br />
+        <%= club.file_field :logo_stadium %></div>
+
+      <div><%= club.label :logo, "Logo" %><br />
+        <%= club.file_field :logo %></div>
+
+      <div><%= club.submit "Create" %></div>
+  <% end %>
+</center>
