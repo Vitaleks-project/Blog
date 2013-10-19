@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @club_list = Club.all
   end
 
   def show

@@ -3,9 +3,8 @@ class Post < ActiveRecord::Base
   acts_as_taggable
   acts_as_commentable
 
-  TAGS = ["Javascript", "Ruby", "Ruby on Rails", "Git", "Jquery", "CSS", "HTML"]
-
   belongs_to :admin
+  belongs_to :club
   validates :admin_id, presence: true
   validates :title, presence: true
   validates :text, presence: true
