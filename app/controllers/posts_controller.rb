@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @club_list = Club.all
+    club_list
   end
 
   def show
@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    club_list
     @post = Post.find(params[:id])
   end
 
@@ -40,6 +41,10 @@ class PostsController < ApplicationController
   def destroy
     Post.find(params[:id]).destroy
     redirect_to :back
+  end
+
+  def club_list
+    @club_list = Club.all
   end
 
   def log_impression

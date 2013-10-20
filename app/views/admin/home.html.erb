@@ -1,5 +1,33 @@
 <center><h3>Admin Page</h3>
-<%= link_to 'Create posts', new_post_path, :class => "btn btn-primary" %>
 <%= link_to 'Create new club', new_club_path, :class => "btn btn-primary" %>
   <%= link_to 'All club', clubs_path, :class => "btn btn-primary" %>
 </center>
+  <div id="content">
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+      <li class="active"><a href="#posts" data-toggle="tab">Posts</a></li>
+      <li><a href="#club" data-toggle="tab">Clubs</a></li>
+      <li><a href="#users" data-toggle="tab">Users</a></li>
+    </ul>
+    <div id="my-tab-content" class="tab-content">
+      <div class="tab-pane active" id="posts">
+        <div class="container-post-admin">
+          <p>Area management posts: </p>
+          <%= link_to 'Create new post', new_post_path, :class => "btn" %>
+        </div>
+        <%= render 'admin/post' %>
+      </div>
+      <div class="tab-pane" id="club">
+
+      </div>
+      <div class="tab-pane" id="users">
+
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+      jQuery(document).ready(function ($) {
+          $('#tabs').click();
+      });
+  </script>
+
+
