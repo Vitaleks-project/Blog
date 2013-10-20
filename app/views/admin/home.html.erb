@@ -1,7 +1,4 @@
-<center><h3>Admin Page</h3>
-<%= link_to 'Create new club', new_club_path, :class => "btn btn-primary" %>
-  <%= link_to 'All club', clubs_path, :class => "btn btn-primary" %>
-</center>
+<h3 class="center">Admin Page</h3>
   <div id="content">
     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
       <li class="active"><a href="#posts" data-toggle="tab">Posts</a></li>
@@ -10,14 +7,18 @@
     </ul>
     <div id="my-tab-content" class="tab-content">
       <div class="tab-pane active" id="posts">
-        <div class="container-post-admin">
+        <div class="container-admin">
           <p>Area management posts: </p>
           <%= link_to 'Create new post', new_post_path, :class => "btn" %>
         </div>
         <%= render 'admin/post' %>
       </div>
       <div class="tab-pane" id="club">
-
+        <div class="container-admin">
+          <p>Area management clubs: </p>
+          <%= link_to 'Create new club', new_club_path, :class => "btn" %>
+        </div>
+        <%= render 'admin/clubs' %>
       </div>
       <div class="tab-pane" id="users">
 

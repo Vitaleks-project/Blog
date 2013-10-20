@@ -1,0 +1,39 @@
+<div><%= will_paginate @clubs, :class => 'left' %></div>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th style="width:5%">ID:</th>
+    <th style="width:20%">Name:</th>
+    <th style="width:15%">Stadium:</th>
+    <th style='width:15%'>Created: <i class="icon-time muted"></i></th>
+    <th style="width:13%">Coach: <i class=" icon-user muted"></i></th>
+    <th style="width:20%">Foundation: <i class="icon-calendar muted"></i></th>
+    <th>Actions: <i class=" icon-wrench muted"></i></th>
+  </tr>
+  </thead>
+  <% @clubs.each do |club| %>
+      <tbody>
+      <tr>
+        <td><%= club.id %></td>
+        <td>
+          <% if club.clubname != 'Manchester United' %>
+            <%=link_to truncate(club.clubname, :length => 25), club  %>
+          <% elsif(club.clubname == 'Manchester United') %>
+            <%= link_to truncate(club.clubname, :length => 25), club %> <i class="icon-ok muted"></i>
+          <% end %>
+        </td>
+        <td><%= club.stadiumname %></td>
+        <td><p class="muted"><%= club.created_at.to_date %></p></td>
+        <td><%= club.coach %></td>
+        <td><%= club.year_of_foundation %></td>
+        <td>
+          <%= link_to " Edit", edit_club_path(club) %>
+          <%= link_to "Delete",club, method: :delete,
+                      data: { confirm: "You sure?" } %>
+        </td>
+      </tr>
+      </tbody>
+  <% end %>
+</table>
+<div><%= will_paginate @clubs, :class => 'left' %></div>
+

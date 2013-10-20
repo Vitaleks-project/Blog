@@ -1,10 +1,6 @@
 class ClubsController < ApplicationController
   before_filter :authenticate_admin!
 
-  def index
-   @clubs = Club.all
-  end
-
   def new
     @club = Club.new
   end
