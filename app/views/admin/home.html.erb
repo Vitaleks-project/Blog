@@ -1,8 +1,8 @@
 <h3 class="center">Admin Page</h3>
   <div id="content">
     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-      <li class="active"><a href="#posts" data-toggle="tab">Posts</a></li>
-      <li><a href="#club" data-toggle="tab">Clubs</a></li>
+      <li class="active"><a href="#posts" data-toggle="tab">Posts (<%= @posts.count %>)</a></li>
+      <li><a href="#club" data-toggle="tab">Clubs (<%= @clubs.count %>)</a></li>
       <li><a href="#users" data-toggle="tab">Users</a></li>
     </ul>
     <div id="my-tab-content" class="tab-content">
@@ -21,7 +21,7 @@
         <%= render 'admin/clubs' %>
       </div>
       <div class="tab-pane" id="users">
-
+        <%= render 'admin/users_list' %>
       </div>
     </div>
   </div>
