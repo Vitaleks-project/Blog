@@ -1,34 +1,22 @@
-<h3 class="center">Admin Page</h3>
-  <div id="content">
-    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-      <li class="active"><a href="#posts" data-toggle="tab">Posts (<%= @posts.count %>)</a></li>
-      <li><a href="#club" data-toggle="tab">Clubs (<%= @clubs.count %>)</a></li>
-      <li><a href="#users" data-toggle="tab">Users</a></li>
-    </ul>
-    <div id="my-tab-content" class="tab-content">
-      <div class="tab-pane active" id="posts">
-        <div class="container-admin">
-          <p>Area management posts: </p>
-          <%= link_to 'Create new post', new_post_path, :class => "btn" %>
-        </div>
-        <%= render 'admin/post' %>
-      </div>
-      <div class="tab-pane" id="club">
-        <div class="container-admin">
-          <p>Area management clubs: </p>
-          <%= link_to 'Create new club', new_club_path, :class => "btn" %>
-        </div>
-        <%= render 'admin/clubs' %>
-      </div>
-      <div class="tab-pane" id="users">
-        <%= render 'admin/users_list' %>
-      </div>
-    </div>
-  </div>
-  <script type="text/javascript">
-      jQuery(document).ready(function ($) {
-          $('#tabs').click();
-      });
-  </script>
-
-
+<%= render 'layouts/header_admin' %>
+<h4 class="left">Admins:</h4>
+<div><%= will_paginate @admins, :class => 'left' %></div>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th style="width:5%">ID:</th>
+    <th style="width:15%">Email:</th>
+    <th style='width:15%'>Created: <i class="icon-time muted"></i></th>
+  </tr>
+  </thead>
+  <% @admins.each do |admin| %>
+      <tbody>
+      <tr>
+        <td><%= admin.id %></td>
+        <td><%= admin.email %></td>
+        <td><%= admin.created_at.to_date %></td>
+      </tr>
+      </tbody>
+  <% end %>
+</table>
+<div><%= will_paginate @admins, :class => 'left' %></div>

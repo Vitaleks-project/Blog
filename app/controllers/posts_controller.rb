@@ -2,6 +2,9 @@ class PostsController < ApplicationController
   before_filter :authenticate_admin!, :only => [:create, :destroy, :new]
   before_filter :log_impression, :only=> [:show]
 
+  def index
+    @posts = Post.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+  end
   def new
     @post = Post.new
     club_list

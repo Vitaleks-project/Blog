@@ -1,6 +1,10 @@
 class ClubsController < ApplicationController
   before_filter :authenticate_admin!
 
+  def index
+    @clubs = Club.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+  end
+
   def new
     @club = Club.new
   end
