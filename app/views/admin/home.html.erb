@@ -7,6 +7,7 @@
     <th style="width:5%">ID:</th>
     <th style="width:15%">Email:</th>
     <th style='width:15%'>Created: <i class="icon-time muted"></i></th>
+    <th>Actions: <i class=" icon-wrench muted"></i></th>
   </tr>
   </thead>
   <% @admins.each do |admin| %>
@@ -15,6 +16,7 @@
         <td><%= admin.id %></td>
         <td><%= admin.email %></td>
         <td><%= admin.created_at.to_date %></td>
+        <td><%= link_to 'Change password',  edit_admin_registration_path %></td>
       </tr>
       </tbody>
   <% end %>
