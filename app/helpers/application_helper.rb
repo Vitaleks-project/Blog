@@ -15,4 +15,13 @@ module ApplicationHelper
     end
   end
 
+  def banned
+    if(user_signed_in?)
+      if(current_user.banned == true)
+        return true
+      else
+        return false
+      end
+    end
+  end
 end

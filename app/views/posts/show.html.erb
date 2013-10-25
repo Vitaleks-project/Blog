@@ -11,4 +11,15 @@
       </div>
     </div>
 <% end %>
-<%= render 'comments/form' if user_signed_in? || admin_signed_in? %>
+
+<% if user_signed_in? %>
+    <% if banned == false %>
+     <%= render 'comments/form' %>
+    <% elsif(banned == true) %>
+     <div class="banned">
+       <h4>Sorry, your account is BANNED! You can not add comments.</h4>
+     </div>
+    <% end %>
+<% elsif(admin_signed_in?) %>
+    <%= render 'comments/form' %>
+<% end %>

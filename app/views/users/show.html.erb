@@ -1,3 +1,9 @@
+<% if(banned == true) %>
+    <div class="banned">
+      <h4>Your account is BANNED!</h4>
+    </div>
+<% end %>
+
 <%= link_to "Edit my profile", edit_user_registration_path, :class => 'btn btn-small' %><br/>
 <% if @user.image? %>
     <%= image_tag @user.image, :size => '200x200' %>
