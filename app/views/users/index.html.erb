@@ -9,6 +9,7 @@
           <th style="width:15%">Email:</th>
           <th style='width:15%'>Created: <i class="icon-time muted"></i></th>
           <th style="width:10%">Banned:<i class=" icon-wrench muted"></i></th>
+          <th>Status:</th>
           <th>Actions: <i class=" icon-wrench muted"></i></th>
         </tr>
         </thead>
@@ -24,6 +25,10 @@
                     <%= link_to 'Ban',  user_path(user, :banned => true), :method => :put %>
                 <% elsif(user.banned == true) %>
                     <%= link_to 'Unban',  user_path(user, :banned => false), :method => :put %>
+                <% end %>
+              </td>
+              <td>
+                <% if user.banned == true %>
                     <span class="label label-important">Banned</span>
                 <% end %>
               </td>
