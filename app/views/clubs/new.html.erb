@@ -1,3 +1,15 @@
+<script>
+    jQuery(function($){
+        $( "#datepicker" ).datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeDay: true,
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true
+
+        });
+    });
+</script>
 <center><h2>Create club</h2>
 
   <%= form_for(@club) do |club| %>
@@ -9,7 +21,7 @@
         <%= club.text_field :stadiumname %></div>
 
       <div><%= club.label :year_of_foundation, "Year of foundation" %><br />
-        <%= club.text_field :year_of_foundation %></div>
+        <%= club.text_field :year_of_foundation, :id => 'datepicker' %></div>
 
       <div><%= club.label :coach, "Coach" %><br />
         <%= club.text_field :coach %></div>
