@@ -3,7 +3,12 @@ class PostsController < ApplicationController
   before_filter :log_impression, :only=> [:show]
 
   def index
-    @posts = Post.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+    if params[:search]
+      @posts = Post.search(params[:search]).paginate(:page => params[:page])
+      flash[:error] = "Not found." if params[:search] == ""
+    else
+      @posts = Post.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+    end
   end
   def new
     @post = Post.new

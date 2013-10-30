@@ -2,7 +2,12 @@ class ClubsController < ApplicationController
   before_filter :authenticate_admin!
 
   def index
-    @clubs = Club.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+    if params[:search]
+      @clubs = Club.search(params[:search]).paginate(:page => params[:page])
+      flash[:error] = "Not found." if params[:search] == ""
+    else
+      @clubs = Club.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   def new

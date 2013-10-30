@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   def index
-    @users = User.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+    if params[:search]
+      @users = User.search(params[:search]).paginate(:page => params[:page])
+      flash[:error] = "Not found." if params[:search] == ""
+    else
+      @users = User.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   def show

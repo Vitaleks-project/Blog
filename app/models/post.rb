@@ -34,4 +34,8 @@ class Post < ActiveRecord::Base
   def self.find_comments_by_user(user)
     Comment.where(["user_id = ? and commentable_type = ?", user.id, self.to_s]).order("created_at DESC")
   end
+
+  def self.search(search)
+    where('title LIKE ?',  "%#{search}%")
+  end
 end

@@ -11,4 +11,8 @@ class Club < ActiveRecord::Base
 
   mount_uploader :logo, ImageUploader
   mount_uploader :logo_stadium, ImageUploader
+
+  def self.search(search)
+    where('clubname LIKE ?',  "%#{search}%") || where('stadiumname LIKE ?',  "%#{search}%") || where('coach LIKE ?',  "%#{search}%")
+  end
 end
