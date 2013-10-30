@@ -8,6 +8,7 @@ Blog::Application.routes.draw do
   get 'tags/:tag', to: 'page#index', as: :tag
   resources :posts
   resources :clubs
+  resources :players
   resources :comments, :only => [:create, :destroy]
   match "home", :to => 'admin#home'
   root :to => 'page#index'

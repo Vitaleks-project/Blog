@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :admin
   belongs_to :club
+  belongs_to :player
   validates :admin_id, presence: true
   validates :title, presence: true
   validates :text, presence: true
