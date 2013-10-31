@@ -21,7 +21,7 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
     if @player.update_attributes(params[:player])
       flash[:success] = "Player updated."
-      redirect_to player_path
+      redirect_to players_path
     else
       render 'edit'
     end
@@ -31,7 +31,7 @@ class PlayersController < ApplicationController
     @player = current_admin.players.build(params[:player])
     if @player.save
       flash[:success] = "Player created!"
-      redirect_to '/home'
+      redirect_to players_path
     else
       render 'new'
     end

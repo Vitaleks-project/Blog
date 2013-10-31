@@ -1,0 +1,44 @@
+<script>
+    jQuery(function($){
+        $( "#datepicker" ).datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeDay: true,
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true
+
+        });
+    });
+</script>
+<div class="center">
+  <h2>Edit player</h2>
+
+  <%= form_for(@player) do |p| %>
+
+      <div><%= p.label :first_name %><br />
+        <%= p.text_field :first_name %></div>
+
+      <div><%= p.label :last_name %><br />
+        <%= p.text_field :last_name %></div>
+
+      <div><%= p.label :club %><br />
+        <%= p.text_field :club %></div>
+
+      <div><%= p.label :number %><br />
+        <%= p.text_field :number %></div>
+
+      <div><%= p.label :position %><br />
+        <%= p.text_field :position %></div>
+
+      <div><%= p.label :country, "Country" %><br />
+        <%= p.text_field :country %></div>
+
+      <div><%= p.label :birthday %><br />
+        <%= p.text_field :birthday, :id => 'datepicker' %></div>
+
+      <div><%= p.label :photo %><br />
+        <%= p.file_field :photo %></div>
+
+      <div><%= p.submit "Update" %></div>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+<% if @player.photo? %>
+    <%= image_tag @player.photo, :size => '200x200' %>
+<% else %>
+    <%= image_tag ("no.png"),  :size => '200x200' %>
+<% end %><br/>
+Name: <%= @player.full_name%><br/>
+Club: <%= @player.club%><br/>
+Number: <%= @player.number %><br/>
+Position: <%= @player.position %><br/>
+Birthday: <%= @player.birthday %><br/>
+Country: <%= @player.country %><br/>
