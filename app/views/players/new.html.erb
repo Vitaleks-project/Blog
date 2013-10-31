@@ -21,8 +21,8 @@
       <div><%= p.label :last_name %><br />
         <%= p.text_field :last_name %></div>
 
-      <div><%= p.label :club %><br />
-        <%= p.text_field :club %></div>
+      <div><%= p.label :club, "Club" %><br />
+        <%= p.collection_select(:club, @club_list, :clubname, :uniq_title, :include_blank => false) %></div>
 
       <div><%= p.label :number %><br />
         <%= p.text_field :number %></div>

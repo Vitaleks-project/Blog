@@ -6,6 +6,7 @@ class PlayersController < ApplicationController
   end
 
   def new
+    club_list
     @player = Player.new
   end
 
@@ -28,6 +29,7 @@ class PlayersController < ApplicationController
   end
 
   def create
+    club_list
     @player = current_admin.players.build(params[:player])
     if @player.save
       flash[:success] = "Player created!"
@@ -35,6 +37,10 @@ class PlayersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def club_list
+    @club_list = Club.all
   end
 
   def destroy
