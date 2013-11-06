@@ -3,7 +3,7 @@ class Club < ActiveRecord::Base
                   :logo_stadium, :stadiumname, :uniq_title, :year_of_foundation, :admin_id
   belongs_to :admin
   has_many :posts
-  has_many :players
+  has_many :players, :dependent => :destroy
 
   validates :uniq_title, uniqueness: true,
                          presence: true

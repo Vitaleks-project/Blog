@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131030154201) do
+ActiveRecord::Schema.define(:version => 20131106142501) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20131030154201) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "admin_id"
+    t.integer  "player_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -116,6 +117,8 @@ ActiveRecord::Schema.define(:version => 20131030154201) do
     t.datetime "updated_at", :null => false
     t.integer  "club_id"
   end
+
+  add_index "players", ["club_id"], :name => "index_players_on_club_id"
 
   create_table "posts", :force => true do |t|
     t.string   "title"

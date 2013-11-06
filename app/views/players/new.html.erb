@@ -13,16 +13,12 @@
 <div class="center">
   <h2>Create player</h2>
 
-  <%= form_for(@player) do |p| %>
-
+  <%= form_for [@club,@player] do |p| %>
       <div><%= p.label :first_name %><br />
         <%= p.text_field :first_name %></div>
 
       <div><%= p.label :last_name %><br />
         <%= p.text_field :last_name %></div>
-
-      <div><%= p.label :club, "Club" %><br />
-        <%= p.collection_select(:club, @club_list, :clubname, :uniq_title, :include_blank => false) %></div>
 
       <div><%= p.label :number %><br />
         <%= p.text_field :number %></div>

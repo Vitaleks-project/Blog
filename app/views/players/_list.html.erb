@@ -1,0 +1,34 @@
+<% if @club.players.present? %>
+    <h4 class="left">Players:</h4><br/>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th style="width:5%">Number:</th>
+        <th style="width:20%">Name:</th>
+        <th style="width:15%">Club:</th>
+        <th style='width:15%'>Country:  </th>
+        <th style="width:13%">Position: </th>
+        <th style="width:20%">Birthday: </th>
+        <th>Actions: <i class=" icon-wrench muted"></i></th>
+      </tr>
+      </thead>
+      <% @club.players.each do |p| %>
+          <tbody>
+          <tr>
+            <td><%= p.number %></td>
+            <td><%= link_to (p.full_name), club_player_path(@club, p)  %></td>
+            <td></td>
+            <td><%= p.country %></td>
+            <td><p class="muted"><%= p.position %></p></td>
+            <td><%= p.birthday %></td>
+            <td>
+
+            </td>
+          </tr>
+          </tbody>
+      <% end %>
+    </table>
+<% else %>
+    <h4 class="center">Players not found...</h4>
+<% end %>
+<%= link_to 'New player', new_club_player_path(@club) %>

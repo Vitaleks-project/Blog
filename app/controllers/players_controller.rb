@@ -1,8 +1,12 @@
 class PlayersController < ApplicationController
   before_filter :authenticate_admin!
+  load_and_authorize_resource :club
+  load_and_authorize_resource :player, :through => :club
 
   def index
-    @players = Player.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+    respond_to do |format|
+      format.json { render json: @players }
+    end
   end
 
   def new
@@ -15,27 +19,31 @@ class PlayersController < ApplicationController
   end
 
   def edit
-    @player = Player.find(params[:id])
   end
 
   def update
-    @player = Player.find(params[:id])
-    if @player.update_attributes(params[:player])
-      flash[:success] = "Player updated."
-      redirect_to players_path
-    else
-      render 'edit'
+    club_list
+    respond_to do |format|
+      if @player.update_attributes(params[:player])
+        format.html { redirect_to [@club,@player], notice: 'Player was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @player.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def create
     club_list
-    @player = current_admin.players.build(params[:player])
-    if @player.save
-      flash[:success] = "Player created!"
-      redirect_to players_path
-    else
-      render 'new'
+    respond_to do |format|
+      if @player.save
+        format.html { redirect_to [@club,@player], notice: 'Player was successfully created.' }
+        format.json { render json: @club, status: :created, location: @club }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @club.errors, status: :unprocessable_entity }
+      end
     end
   end
 

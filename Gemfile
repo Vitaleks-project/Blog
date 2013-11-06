@@ -12,6 +12,7 @@ gem 'paperclip'
 gem 'turbolinks'
 gem 'impressionist'
 gem 'jquery_datepicker'
+gem 'cancan'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
