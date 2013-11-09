@@ -22,7 +22,9 @@
             <td><p class="muted"><%= p.position %></p></td>
             <td><%= p.birthday %></td>
             <td>
-
+              <%= link_to " Edit", edit_club_player_path(@club, p) %>
+              <%= link_to "Delete", club_player_path(@club, p), method: :delete,
+                          data: { confirm: "You sure?" } %>
             </td>
           </tr>
           </tbody>
