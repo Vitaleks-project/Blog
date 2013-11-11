@@ -33,6 +33,8 @@ group :development, :test do
   gem "guard-rspec"
   gem 'capybara'
   gem 'rspec-given'
+  gem 'simplecov'
+  gem "database_cleaner"
 end
 
 

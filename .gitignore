@@ -16,3 +16,4 @@ doc/app
 *.*~
 coverage
 config/database.yml
+.rspec
