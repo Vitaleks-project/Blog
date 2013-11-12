@@ -46,6 +46,6 @@ class PlayersController < ApplicationController
 
   def destroy
     Player.find(params[:id]).destroy
-    redirect_to :back
+    redirect_to club_path(@club)
   end
 end
