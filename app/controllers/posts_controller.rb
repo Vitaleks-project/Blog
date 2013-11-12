@@ -10,6 +10,7 @@ class PostsController < ApplicationController
       @posts = Post.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
     end
   end
+
   def new
     @post = Post.new
     club_list
@@ -25,7 +26,7 @@ class PostsController < ApplicationController
     @post = current_admin.posts.build(params[:post])
     if @post.save
       flash[:success] = "Post created!"
-      redirect_to '/home'
+      redirect_to posts_path
     else
       render 'new'
     end
@@ -48,7 +49,7 @@ class PostsController < ApplicationController
 
   def destroy
     Post.find(params[:id]).destroy
-    redirect_to :back
+    redirect_to posts_path
   end
 
   def club_list
