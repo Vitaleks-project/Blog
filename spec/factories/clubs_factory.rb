@@ -2,13 +2,12 @@
 
 FactoryGirl.define do
   factory :club do
-    clubname "MyString"
-    stadiumname "MyString"
-    coach "MyString"
-    year_of_foundation 1
-    logo "MyString"
-    logo_stadium "MyString"
-    uniq_title "MyString"
-    description "MyString"
+    clubname "Manchester United"
+    stadiumname "Old Trafford"
+    coach "D.Moyes"
+    year_of_foundation 1898-10-10
+    uniq_title "MU"
+    description "Glory, Glory Man United"
+    admin_id 1
   end
 end

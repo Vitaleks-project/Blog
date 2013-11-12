@@ -36,7 +36,7 @@ class ClubsController < ApplicationController
     @club = current_admin.clubs.build(params[:club])
     if @club.save
       flash[:success] = "Club created!"
-      redirect_to '/home'
+      redirect_to clubs_path
     else
       render 'new'
     end
@@ -44,6 +44,6 @@ class ClubsController < ApplicationController
 
   def destroy
     Club.find(params[:id]).destroy
-    redirect_to :back
+    redirect_to clubs_path
   end
 end
