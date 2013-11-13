@@ -4,11 +4,7 @@ class Post < ActiveRecord::Base
   acts_as_commentable
 
   belongs_to :admin
-  belongs_to :club
-  belongs_to :player
-  validates :admin_id, presence: true
-  validates :title, presence: true
-  validates :text, presence: true
+  validates :admin_id, :title, :text, presence: true
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :impressions, :as=>:impressionable
 

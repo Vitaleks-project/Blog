@@ -6,7 +6,6 @@ class Player < ActiveRecord::Base
 
   belongs_to :club
   belongs_to :admin
-  has_many :posts
 
   validates :club_id, presence: true
 
