@@ -4,6 +4,7 @@ Blog::Application.routes.draw do
   devise_for :admins
   devise_for :user
   resources :users
+  resources :games
 
   get 'tags/:tag', to: 'page#index', as: :tag
   resources :posts

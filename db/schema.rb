@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131106142501) do
+ActiveRecord::Schema.define(:version => 20131120152439) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
@@ -63,6 +63,11 @@ ActiveRecord::Schema.define(:version => 20131106142501) do
     t.integer  "player_id"
   end
 
+  create_table "clubs_games", :id => false, :force => true do |t|
+    t.integer "club_id"
+    t.integer "game_id"
+  end
+
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
     t.text     "comment"
@@ -76,6 +81,15 @@ ActiveRecord::Schema.define(:version => 20131106142501) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "games", :force => true do |t|
+    t.string   "location"
+    t.string   "total"
+    t.integer  "admin_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "club_ids"
+  end
 
   create_table "impressions", :force => true do |t|
     t.string   "impressionable_type"

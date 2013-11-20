@@ -1,0 +1,14 @@
+<div class="left"><h2>Create game</h2>
+  <%= form_for(@game) do |game| %>
+      Location: <%= game.text_field :location %><br/>
+      Result:  <%= game.text_field :total %><br/>
+
+      <% for club in Club.all %>
+          <div>
+            <%= check_box_tag "game[club_ids][]", club.id, @game.clubs.include?(game) %>
+            <%= club.clubname %>
+          </div>
+      <% end %>
+      <%= game.submit "Create" %>
+  <% end %>
+</div>

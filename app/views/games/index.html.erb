@@ -1,0 +1,13 @@
+<%= render 'layouts/header_admin' %>
+<% @games.each do |game| %>
+    <%= game.id %>
+    <%= game.location %><br/>
+    <%= game.clubs.first.clubname if !game.clubs.empty? %>
+    VS
+    <%= game.clubs.last.clubname if !game.clubs.empty? %>
+
+    <br/>
+    <%= link_to "Delete", game, method: :delete,
+                data: { confirm: "You sure?" } %>
+    <hr>
+<% end %>
