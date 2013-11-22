@@ -16,6 +16,7 @@ class ClubsController < ApplicationController
 
   def show
     @club = Club.find(params[:id])
+    @game_list = @club.games.limit(7)
   end
 
   def edit

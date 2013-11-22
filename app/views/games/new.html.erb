@@ -1,14 +1,18 @@
-<div class="left"><h2>Create game</h2>
-  <%= form_for(@game) do |game| %>
-      Location: <%= game.text_field :location %><br/>
-      Result:  <%= game.text_field :total %><br/>
+<div class="center"><h2>Create game</h2></div>
+<%= form_for(@game) do |game| %>
+    <div class="center">
+        <div><%= game.label :location %>
+        <%= game.text_field :location %></div>
 
-      <% for club in Club.all %>
-          <div>
-            <%= check_box_tag "game[club_ids][]", club.id, @game.clubs.include?(game) %>
-            <%= club.clubname %>
-          </div>
-      <% end %>
-      <%= game.submit "Create" %>
-  <% end %>
-</div>
+        <div><%= game.label :total %>
+        <%= game.text_field :total %></div>
+    </div>
+
+<% for club in Club.all %>
+    <div>
+        <%= check_box_tag "game[club_ids][]", club.id, @game.clubs.include?(game) %>
+        <%= club.clubname %>
+    </div>
+<% end %>
+    <%= game.submit "Create" %>
+<% end %>
