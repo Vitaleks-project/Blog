@@ -7,7 +7,7 @@ class Game < ActiveRecord::Base
   before_save :only_two_clubs
 
   def only_two_clubs
-    if club_ids.size <= 2
+    if club_ids.size == 2
       return true
     else
       return false

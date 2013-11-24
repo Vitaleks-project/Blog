@@ -13,6 +13,16 @@
 <center><h2>Create club</h2>
 
   <%= form_for(@club) do |club| %>
+      <% if @club.errors.present? %>
+          <div class="alert alert-error fade in">
+            <ul>
+              <h4><%= @club.errors.count > 1  ? "You have #{@club.errors.count} errors" : "You have #{@club.errors.count} error"%></h4>
+              <% @club.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
 
       <div><%= club.label :clubname, "Name club" %><br />
         <%= club.text_field :clubname, :autofocus => true %></div>

@@ -14,6 +14,16 @@
   <h2>Create player</h2>
 
   <%= form_for [@club,@player] do |p| %>
+      <% if @player.errors.present? %>
+          <div class="alert alert-error fade in">
+            <ul>
+              <h4><%= @player.errors.count > 1  ? "You have #{@player.errors.count} errors" : "You have #{@club.errors.count} error"%></h4>
+              <% @player.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
       <div><%= p.label :first_name %><br />
         <%= p.text_field :first_name %></div>
 

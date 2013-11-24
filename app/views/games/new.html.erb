@@ -1,5 +1,15 @@
 <div class="center"><h2>Create game</h2></div>
 <%= form_for(@game) do |game| %>
+    <% if @game.errors.present? %>
+        <div class="alert alert-error fade in">
+            <ul>
+              <h4><%= @game.errors.count > 1  ? "You have #{@game.errors.count} errors" : "You have #{@game.errors.count} error"%></h4>
+              <% @game.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+        </div>
+    <% end %>
     <div class="center">
         <div><%= game.label :location %>
         <%= game.text_field :location %></div>

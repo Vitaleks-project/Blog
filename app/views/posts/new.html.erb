@@ -1,6 +1,16 @@
 <center><h2>Create posts</h2>
 
   <%= form_for(@post) do |post| %>
+      <% if @post.errors.present? %>
+      <div class="alert alert-error fade in">
+        <ul>
+          <h4><%= @post.errors.count > 1  ? "You have #{@post.errors.count} errors" : "You have #{@post.errors.count} error"%></h4>
+          <% @post.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
 
       <div><%= post.label :title %><br />
         <%= post.text_field :title, :autofocus => true %></div>
