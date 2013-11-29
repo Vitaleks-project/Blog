@@ -6,3 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Admin.create(:email => 'admin@blog.com', :password => '12345678')
+
+15.times do |i|
+  Post.create(:admin_id => 1,
+              :title => "Titte_#{i}",
+              :text => "Description_#{i}")
+end
+
