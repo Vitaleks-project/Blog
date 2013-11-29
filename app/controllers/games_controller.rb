@@ -9,6 +9,10 @@ class GamesController < ApplicationController
     @game = Game.new
   end
 
+  def edit
+    @game = Game.find(params[:id])
+  end
+
   def create
     @game = Game.new(params[:game])
     @game.admin_id = current_admin.id
@@ -17,6 +21,16 @@ class GamesController < ApplicationController
       redirect_to games_path
     else
       render 'new'
+    end
+  end
+
+  def update
+    @game = Game.find(params[:id])
+    if @game.update_attributes(params[:game])
+      flash[:success] = "Game updated."
+      redirect_to games_path
+    else
+      render 'edit'
     end
   end
 

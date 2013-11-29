@@ -1,3 +1,4 @@
+<%= render "layouts/datepicker" %>
 <div class="center"><h2>Create game</h2></div>
 <%= form_for(@game) do |game| %>
     <% if @game.errors.present? %>
@@ -16,6 +17,9 @@
 
         <div><%= game.label :total %>
         <%= game.text_field :total %></div>
+
+        <div><%=game.label :date %>
+        <%=game.text_field :date, :id => 'datepicker'%></div>
     </div>
 
 <% for club in Club.all %>

@@ -3,10 +3,13 @@
 <% if @games.present? %>
 <% @games.each do |game| %>
     <div class="center" style="padding: 1%">
+        <div class="left"><%= game.date %></div>
         <%= game.clubs.first.clubname %>
         <%= game.total %>
         <%= game.clubs.last.clubname  %>
-        <div class="right"><%= link_to "Delete", game, method: :delete, data: { confirm: "You sure?" } %></div>
+        <div class="right">
+          <%= link_to "Edit ", edit_game_path(game) %>
+          <%= link_to "Delete", game, method: :delete, data: { confirm: "You sure?" } %></div>
     </div>
 <% end %>
 <% else %>
