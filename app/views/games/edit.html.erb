@@ -1,0 +1,32 @@
+<%= render "layouts/datepicker" %>
+<div class="center"><h2>Create game</h2></div>
+<%= form_for(@game) do |game| %>
+    <% if @game.errors.present? %>
+        <div class="alert alert-error fade in">
+          <ul>
+            <h4><%= @game.errors.count > 1  ? "You have #{@game.errors.count} errors" : "You have #{@game.errors.count} error"%></h4>
+            <% @game.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="center">
+      <div><%= game.label :location %>
+        <%= game.text_field :location %></div>
+
+      <div><%= game.label :total %>
+        <%= game.text_field :total %></div>
+
+      <div><%=game.label :date %>
+        <%=game.text_field :date, :id => 'datepicker'%></div>
+    </div>
+
+    <% for club in Club.all %>
+        <div>
+          <%= check_box_tag "game[club_ids][]", club.id, @game.clubs.include?(game) %>
+          <%= club.clubname %>
+        </div>
+    <% end %>
+    <%= game.submit "Create" %>
+<% end %>
