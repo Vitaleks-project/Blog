@@ -3,7 +3,10 @@
 <% if @games.present? %>
 <% @games.each do |game| %>
     <div class="center" style="padding: 1%">
-        <div class="left"><%= game.date %></div>
+        <div class="left">
+          <%= game.date %>
+          (<%= game.location %>)
+        </div>
         <%= game.clubs.first.clubname %>
         <%= game.total %>
         <%= game.clubs.last.clubname  %>

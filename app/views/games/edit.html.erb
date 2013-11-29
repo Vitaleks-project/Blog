@@ -13,7 +13,7 @@
     <% end %>
     <div class="center">
       <div><%= game.label :location %>
-        <%= game.text_field :location %></div>
+        <%= game.select :location,  Game::LOCATION %></div>
 
       <div><%= game.label :total %>
         <%= game.text_field :total %></div>

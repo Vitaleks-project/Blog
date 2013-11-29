@@ -6,6 +6,9 @@ class Game < ActiveRecord::Base
 
   before_save :only_two_clubs
 
+  LOCATION = ["Home", "Away", "Neutral"]
+
+
   def only_two_clubs
     if club_ids.size == 2
       return true
