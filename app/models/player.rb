@@ -8,7 +8,7 @@ class Player < ActiveRecord::Base
   belongs_to :admin
 
   validates :club_id, presence: true
-  validates :club, :first_name, :photo, :number, presence: true
+  validates :club, :first_name, :number, presence: true
 
   def full_name
     [first_name, last_name].compact.join(' ')
