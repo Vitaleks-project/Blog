@@ -12,6 +12,9 @@
         </div>
     <% end %>
     <div class="center">
+      <div><%= game.label :kind %>
+        <%= game.select :kind,  Game::KIND_GAME %></div>
+
       <div><%= game.label :location %>
         <%= game.select :location,  Game::LOCATION %></div>
 
