@@ -18,9 +18,6 @@
       <div><%= game.label :location %>
         <%= game.select :location,  Game::LOCATION %></div>
 
-      <div><%= game.label :total %>
-        <%= game.text_field :total %></div>
-
       <div><%=game.label :date %>
         <%=game.text_field :date, :id => 'datepicker'%></div>
     </div>
