@@ -19,6 +19,11 @@
       <div><%= p.label :country, "Country" %><br />
         <%= p.text_field :country %></div>
 
+      <div>
+        <%= p.label :club %>
+        <%= p.collection_select :club_id, Club.all, :id, :clubname %>
+      </div>
+
       <div><%= p.label :birthday %><br />
         <%= p.text_field :birthday, :id => 'datepicker' %></div>
 

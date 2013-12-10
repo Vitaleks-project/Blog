@@ -16,7 +16,7 @@
         <%= post.text_field :title, :autofocus => true %></div>
 
       <div><%= post.label :tag_list, "Club" %><br />
-        <%= post.collection_select(:tag_list, @club_list, :clubname, :uniq_title, :include_blank => false) %></div>
+        <%= post.collection_select(:tag_list, @club_list, :clubname, :clubname, :include_blank => false) %></div>
 
       <div><%= post.label :text %><br />
         <%= post.cktext_area :text, :cols => 40, :ckeditor => {:toolbar => "mini"} %></div>

@@ -5,7 +5,6 @@
       <tr>
         <th style="width:5%">Number:</th>
         <th style="width:20%">Name:</th>
-        <th style="width:15%">Club:</th>
         <th style='width:15%'>Country:  </th>
         <th style="width:13%">Position: </th>
         <th style="width:20%">Birthday: </th>
@@ -17,7 +16,6 @@
           <tr>
             <td><%= p.number %></td>
             <td><%= link_to (p.full_name), club_player_path(@club, p)  %></td>
-            <td></td>
             <td><%= p.country %></td>
             <td><p class="muted"><%= p.position %></p></td>
             <td><%= p.birthday %></td>
