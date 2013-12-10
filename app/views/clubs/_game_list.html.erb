@@ -13,9 +13,13 @@
             <% @game_list.each do |game| %>
               <tbody>
                 <tr>
-                <td><%= game.clubs.first.clubname %></td>
-                <td><%= game.total %></td>
-                <td><%= game.clubs.last.clubname %></td>
+                <% if game.location == "Home" %>
+                   <td><%= game.clubs.first.clubname %></td>
+                   <td><%= game.clubs.last.clubname %></td>
+                <% elsif(game.location == "Away") %>
+                   <td><%= game.clubs.last.clubname %></td>
+                   <td><%= game.clubs.first.clubname %></td>
+                <% end %>
             <% end %>
               </tr>
               </tbody>

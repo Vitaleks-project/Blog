@@ -7,8 +7,13 @@
           <%= game.date %>
           (<%= game.location %>)
         </div>
-        <%= game.clubs.first.clubname %>
-        <%= game.clubs.last.clubname  %>
+        <% if game.location == "Home" %>
+           <%= game.clubs.first.clubname %>
+           <%= game.clubs.last.clubname  %>
+        <% elsif(game.location == "Away") %>
+           <%= game.clubs.last.clubname  %>
+           <%= game.clubs.first.clubname  %>
+        <% end %>
         <div class="right">
           <%= link_to "Edit ", edit_game_path(game) %>
           <%= link_to "Delete", game, method: :delete, data: { confirm: "You sure?" } %></div>
