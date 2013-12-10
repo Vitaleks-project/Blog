@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Club do
   it { should belong_to(:admin) }
   it { should have_many(:players) }
+  it { should have_and_belong_to_many(:games) }
 
   it { should validate_presence_of(:uniq_title) }
   it { should validate_uniqueness_of(:uniq_title) }

@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  attr_accessible :admin_id, :location, :total, :club_ids, :date, :kind
+  attr_accessible :admin_id, :location, :club_ids, :date, :kind
   belongs_to :admin
   validates :admin_id, :location, :date, :kind, :presence => true
   has_and_belongs_to_many :clubs

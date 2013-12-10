@@ -6,7 +6,7 @@ FactoryGirl.define do
     stadiumname "Old Trafford"
     coach "D.Moyes"
     year_of_foundation 1898-10-10
-    uniq_title "MU"
+    sequence(:uniq_title){|n| "MU_#{n}"}
     description "Glory, Glory Man United"
     admin_id 1
   end
