@@ -22,7 +22,7 @@
         <%=game.text_field :date, :id => 'datepicker'%></div>
     </div>
 
-<% for club in Club.all %>
+<% for club in Club.order("updated_at DESC").all %>
     <div>
         <%= check_box_tag "game[club_ids][]", club.id, @game.clubs.include?(game) %>
         <%= club.clubname %>

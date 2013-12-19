@@ -21,6 +21,9 @@
       <div><%= club.label :description, "Description" %><br />
         <%= club.text_area :description, :rows => 6 %></div>
 
+      <div><%= club.label :country %><br />
+        <%= club.select :country, Club::COUNTRY %></div>
+
       <div><%= club.label :logo_stadium, "Photo Stadium" %><br />
         <%= club.file_field :logo_stadium %></div>
 
