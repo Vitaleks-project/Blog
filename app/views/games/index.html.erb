@@ -8,11 +8,11 @@
           (<%= game.location %>)
         </div>
         <% if game.location == "Home" %>
-           <%= game.clubs.first.clubname %>
-           <%= game.clubs.last.clubname  %>
+           <%= game.clubs[1].clubname %>
+           <%= game.clubs[0].clubname %>
         <% elsif(game.location == "Away") %>
-           <%= game.clubs.last.clubname  %>
-           <%= game.clubs.first.clubname  %>
+          <%= game.clubs[0].clubname %>
+          <%= game.clubs[1].clubname %>
         <% end %>
         <div class="right">
           <%= link_to "Edit ", edit_game_path(game) %>
