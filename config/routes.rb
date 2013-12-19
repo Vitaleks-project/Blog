@@ -1,10 +1,12 @@
 Blog::Application.routes.draw do
+
   mount Ckeditor::Engine => '/ckeditor'
 
   devise_for :admins
   devise_for :user
   resources :users
   resources :games
+  resources :injureds
 
   get 'tags/:tag', to: 'page#index', as: :tag
   resources :posts

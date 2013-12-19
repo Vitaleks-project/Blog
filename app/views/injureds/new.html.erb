@@ -1,0 +1,29 @@
+<%= render "layouts/datepicker" %>
+<center><h2>Create injured</h2>
+
+  <%= form_for(@injured) do |i| %>
+      <% if @injured.errors.present? %>
+          <div class="alert alert-error fade in">
+            <ul>
+              <h4><%= @injured.errors.count > 1  ? "You have #{@injured.errors.count} errors" : "You have #{@injured.errors.count} error"%></h4>
+              <% @injured.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div><%= i.label :injurious, "injurious" %><br />
+        <%= i.text_field :injurious, :autofocus => true %></div>
+
+      <div>
+        <%= i.label :player_name %>
+        <%= i.collection_select :player_name, Player.find_all_by_club_id(1), :last_name, :last_name %>
+      </div>
+
+      <div><%= i.label :date_and %><br />
+        <%= i.text_field :date_and, :id => 'datepicker' %></div>
+
+      <div><%= i.submit "Create" %></div>
+  <% end %>
+</center>

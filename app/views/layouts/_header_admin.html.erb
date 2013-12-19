@@ -5,10 +5,12 @@
       <%= link_to 'Users', users_path, :class=>'btn' %>
       <%= link_to 'Games', games_path, :class=>'btn' %>
       <%= link_to 'Admins', home_path, :class=>'btn' %>
+      <%= link_to 'Injureds', injureds_path, :class=>'btn' %>
     </div>
     <div class="right">
       <%= link_to 'New game', new_game_path, :class => 'right btn' if request.fullpath == "/games"  %>
       <%= link_to 'New club', new_club_path, :class => 'right btn' if request.fullpath == "/clubs"  %>
       <%= link_to 'New posts', new_post_path, :class => 'right btn' if request.fullpath == "/posts"  %>
+      <%= link_to 'New injureds', new_injured_path, :class => 'right btn' if request.fullpath == "/injureds"  %>
     </div>
 </div>

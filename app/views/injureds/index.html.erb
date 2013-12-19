@@ -1,0 +1,35 @@
+<%= render 'layouts/header_admin' %>
+<% if @injureds.present? %>
+    <h4 class="left">Injureds:</h4>
+    <div><%= will_paginate @injureds, :class => 'right' %></div>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th style="width:5%">ID:</th>
+        <th style="width:20%">Name:</th>
+        <th style="width:15%">Injurious:</th>
+        <th style='width:15%'>Date_and: <i class="icon-time muted"></i></th>
+        <th>Actions: <i class=" icon-wrench muted"></i></th>
+      </tr>
+      </thead>
+      <% @injureds.each do |i| %>
+          <tbody>
+          <tr>
+            <td><%= i.id %></td>
+            <td><%= i.player_name %></td>
+            <td><%= i.injurious %></td>
+            <td><p class="muted"><%= i.date_and %></p></td>
+            <td>
+              <%= link_to " Edit", edit_injured_path(i) %>
+              <%= link_to "Delete",i, method: :delete,
+                          data: { confirm: "You sure?" } %>
+            </td>
+          </tr>
+          </tbody>
+      <% end %>
+    </table>
+    <div><%= will_paginate @injureds, :class => 'right' %></div>
+<% else %>
+    <h4 class="center">Injureds not found...</h4>
+<% end %>
+
