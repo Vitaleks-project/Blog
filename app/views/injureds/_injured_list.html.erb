@@ -1,0 +1,13 @@
+<div class="mini-header-left-panel">
+  <p>Injured list:</p>
+</div>
+<% Injured.last(10).each do |i| %>
+    <div style="padding: 1% 2%">
+        <li>
+            <%= i.player_name %>
+            (<%= i.injurious %>)
+           <p class="right"> End: <%= i.date_and %></p>
+        </li>
+    </div>
+    <br/>
+<% end %>
