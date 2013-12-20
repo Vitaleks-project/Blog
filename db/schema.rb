@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131219151840) do
+ActiveRecord::Schema.define(:version => 20131220084529) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
@@ -120,7 +120,6 @@ ActiveRecord::Schema.define(:version => 20131219151840) do
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
   create_table "injureds", :force => true do |t|
-    t.integer  "player_id"
     t.string   "injurious"
     t.string   "date_and"
     t.string   "player_name"

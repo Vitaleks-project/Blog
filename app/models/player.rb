@@ -6,6 +6,7 @@ class Player < ActiveRecord::Base
 
   belongs_to :club
   belongs_to :admin
+  belongs_to :injured
 
   validates :club_id, presence: true
   validates :club, :first_name, :number, presence: true
