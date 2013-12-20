@@ -8,5 +8,6 @@ class Admin < ActiveRecord::Base
   has_many :players
   has_many :games
   has_many :injureds
+  has_many :news
   has_many :comments, :as => :commentable
 end

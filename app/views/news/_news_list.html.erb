@@ -1,0 +1,11 @@
+<div class="mini-header-left-panel">
+  <p>Another news:</p>
+</div>
+<% if News.last(7).present? %>
+      <% News.last(7).each do |n| %>
+        <li style="padding: 2%"><%= link_to n.title, n.url, target: :blank %></li>
+      <% end %>
+<% else %>
+    <h4 class="center">News not found...</h4>
+<% end %>
+

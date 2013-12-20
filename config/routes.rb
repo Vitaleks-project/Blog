@@ -6,6 +6,7 @@ Blog::Application.routes.draw do
   devise_for :user
   resources :users
   resources :games
+  resources :news
   resources :injureds
 
   get 'tags/:tag', to: 'page#index', as: :tag

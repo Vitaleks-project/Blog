@@ -1,0 +1,23 @@
+<center><h2>Create news</h2>
+
+  <%= form_for(@new) do |i| %>
+      <% if @new.errors.present? %>
+          <div class="alert alert-error fade in">
+            <ul>
+              <h4><%= @new.errors.count > 1  ? "You have #{@new.errors.count} errors" : "You have #{@new.errors.count} error"%></h4>
+              <% @new.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div><%= i.label :title, "Title" %><br />
+        <%= i.text_field :title, :autofocus => true %></div>
+
+      <div><%= i.label :url %>
+        <%= i.text_field :url, :placeholder => 'http://..' %></div>
+
+      <div><%= i.submit "Create" %></div>
+  <% end %>
+</center>

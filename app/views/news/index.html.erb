@@ -1,0 +1,33 @@
+<%= render 'layouts/header_admin' %>
+<% if @news.present? %>
+    <h4 class="left">All another news:</h4>
+    <div><%= will_paginate @injureds, :class => 'right' %></div>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th style="width:5%">ID:</th>
+        <th style="width:50%">Title: <i class=" icon-list muted"></i></th>
+        <th style="width:15%">Created:</th>
+        <th>Actions: <i class=" icon-wrench muted"></i></th>
+      </tr>
+      </thead>
+      <% @news.each do |n| %>
+          <tbody>
+          <tr>
+            <td><%= n.id %></td>
+            <td><%= link_to n.title, n.url, target: :blank %></td>
+            <td><%= n.created_at.to_date %></td>
+            <td>
+              <%= link_to " Edit", edit_news_path(n) %>
+              <%= link_to "Delete", n, method: :delete,
+                          data: { confirm: "You sure?" } %>
+            </td>
+          </tr>
+          </tbody>
+      <% end %>
+    </table>
+    <div><%= will_paginate @news, :class => 'right' %></div>
+<% else %>
+    <h4 class="center">News not found...</h4>
+<% end %>
+
