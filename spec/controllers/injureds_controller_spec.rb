@@ -8,7 +8,6 @@ describe InjuredsController do
 
   def valid_attributes
     {
-        player_id: 1,
         injurious: "Foot",
         date_and: 1898-10-10,
         player_name: "Rooney"

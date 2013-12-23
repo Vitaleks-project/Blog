@@ -38,5 +38,4 @@ class NewsController < ApplicationController
     News.find(params[:id]).destroy
     redirect_to news_index_path
   end
-
 end

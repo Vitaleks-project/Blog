@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :news do
-    title "MyString"
-    url "MyString"
+    title "My first news"
+    url "http://football.ua/"
     admin_id 1
   end
 end
