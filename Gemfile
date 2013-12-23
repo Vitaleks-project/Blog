@@ -13,6 +13,7 @@ gem 'turbolinks'
 gem 'impressionist'
 gem 'jquery_datepicker'
 gem 'cancan'
+gem 'acts_as_votable', '~> 0.8.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

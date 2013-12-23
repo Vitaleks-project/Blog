@@ -52,6 +52,12 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def upvote
+    @post = Post.find(params[:id])
+    @post.liked_by(current_admin || current_user)
+    redirect_to :back
+  end
+
   def club_list
     @club_list = Club.all
   end

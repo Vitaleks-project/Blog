@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
   attr_accessible :text, :title, :admin_id, :tag_list
   acts_as_taggable
   acts_as_commentable
+  acts_as_votable
 
   belongs_to :admin
   validates :admin_id, :title, :text, presence: true

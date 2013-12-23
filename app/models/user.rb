@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :image, :banned
   mount_uploader :image, ImageUploader
+  acts_as_voter
   has_many :comments, :as => :commentable, :dependent => :destroy
   validates :email, presence: true
 

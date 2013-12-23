@@ -10,7 +10,12 @@ Blog::Application.routes.draw do
   resources :injureds
 
   get 'tags/:tag', to: 'page#index', as: :tag
-  resources :posts
+
+  resources :posts do
+    member do
+      put "like", to: "posts#upvote"
+    end
+  end
 
   resources :clubs do
     resources :players

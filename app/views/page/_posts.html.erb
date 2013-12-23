@@ -8,8 +8,13 @@
         <% if (Date.today.day == post.created_at.to_date.day)%>
             <span class="label">New</span>
         <% end %>
-        <small><i class="icon-comment muted"> <%= post.comments.count %></i></small>
-        <small><i class="icon-eye-open muted"> <%= post.impression_count %></i></small>
+        <small><i class="icon-comment muted"><%= post.comments.size %></i></small>
+        <small><i class="icon-eye-open muted"><%= post.impression_count %></i></small>
+        <% if (admin_signed_in? && current_admin.voted_for?(post) == false) || (user_signed_in? && current_user.voted_for?(post) == false) %>
+           <%= link_to "#{post.votes.size} ", {:controller =>"posts", :action => "upvote", :id => post.id}, :class => 'btn btn-small icon-thumbs-up', method: :put  %>
+        <% else %>
+            <%= link_to "#{post.votes.size}", {}, :class => 'btn btn-small disabled icon-thumbs-up'   %>
+        <% end %>
       </div>
       <br/>
   <% end %>
