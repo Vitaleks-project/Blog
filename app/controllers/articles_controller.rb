@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_filter :authenticate_admin!, :except => [:new, :create]
+  before_filter :authenticate_admin!, :except => [:new, :create, :show]
 
   def index
     @articles = Article.order('created_at DESC').

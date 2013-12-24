@@ -18,7 +18,11 @@
           <tr>
             <td><%= a.id %></td>
             <td><%= link_to a.title, a %></td>
-            <td><%= a.user.try(:email) || a.admin.try(:email) %></td>
+            <td>
+              <div class="small-text">
+                <%= a.user.try(:email) || a.admin.try(:email) %>
+              </div>
+            </td>
             <td>
               <% if a.approved == false %>
                 <%= link_to 'Approved', article_path(a, :approved => true), :method => :put %>
