@@ -4,6 +4,8 @@ Blog::Application.routes.draw do
 
   devise_for :admins
   devise_for :user
+
+  resources :articles
   resources :users
   resources :games
   resources :news

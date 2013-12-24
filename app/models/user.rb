@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   acts_as_voter
   has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :articles
   validates :email, presence: true
 
   def self.search(search)

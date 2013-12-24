@@ -1,0 +1,44 @@
+<%= render 'layouts/header_admin' %>
+<% if @articles.present? %>
+    <h4 class="left">All articles:</h4>
+    <div><%= will_paginate @articles, :class => 'right' %></div>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th style="width:5%">ID:</th>
+        <th style="width:25%">Title: <i class=" icon-list muted"></i></th>
+        <th style="width:15%">By:</th>
+        <th style="width:15%">Approved:</th>
+        <th style="width:15%">Created:</th>
+        <th style="width:20%">Actions: <i class=" icon-wrench muted"></i></th>
+      </tr>
+      </thead>
+      <% @articles.each do |a| %>
+          <tbody>
+          <tr>
+            <td><%= a.id %></td>
+            <td><%= link_to a.title, a %></td>
+            <td><%= a.user.try(:email) || a.admin.try(:email) %></td>
+            <td>
+              <% if a.approved == false %>
+                <%= link_to 'Approved', article_path(a, :approved => true), :method => :put %>
+              <% elsif(a.approved == true) %>
+                  <span class="label label-success">Approved</span>
+              <% end %>
+            </td>
+            <td><%= a.created_at.to_date %></td>
+            <td>
+              <%= link_to " Disaproved", article_path(a, :approved => false), :method => :put if a.approved == true %>
+              <%= link_to " Edit", edit_news_path(a) %>
+              <%= link_to "Delete", a, method: :delete,
+                          data: { confirm: "You sure?" } %>
+            </td>
+          </tr>
+          </tbody>
+      <% end %>
+    </table>
+    <div><%= will_paginate @articles, :class => 'right' %></div>
+<% else %>
+    <h4 class="center">Articles not found...</h4>
+<% end %>
+

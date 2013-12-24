@@ -7,6 +7,7 @@
       <%= link_to 'Admins', home_path, :class=>'btn' %>
       <%= link_to 'Injureds', injureds_path, :class=>'btn' %>
       <%= link_to 'Another news', news_index_path, :class=>'btn' %>
+      <%= link_to 'Article', articles_path, :class=>'btn' %>
 
     </div>
     <div class="right">
@@ -15,5 +16,6 @@
       <%= link_to 'New posts', new_post_path, :class => 'right btn' if request.fullpath == "/posts"  %>
       <%= link_to 'New injureds', new_injured_path, :class => 'right btn' if request.fullpath == "/injureds"  %>
       <%= link_to 'New news', new_news_path, :class => 'right btn' if request.fullpath == "/news"  %>
+      <%= link_to 'New article', new_article_path, :class => 'right btn' if request.fullpath == "/articles"  %>
     </div>
 </div>

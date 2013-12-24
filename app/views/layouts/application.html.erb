@@ -18,10 +18,11 @@
       <div class="navbar-inner">
         <a class="brand" href="/">Blog</a>
         <ul class="nav pull-right">
-          <% if user_signed_in? || admin_signed_in?%>
+          <% if user_signed_in? || admin_signed_in? %>
             <% if admin_signed_in? %>
               <li><a href="/home">Admin page</a></li>
             <% end %>
+            <li><%= link_to 'Add your Article', new_article_path if !admin_signed_in? %></li>
             <li><%= link_to "#{current_user.name || current_user.email}", current_user unless admin_signed_in? %></li>
             <li><%= link_to("Logout", destroy_user_session_path, :method => :delete) %></li>
           <% else %>

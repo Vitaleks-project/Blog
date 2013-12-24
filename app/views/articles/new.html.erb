@@ -1,0 +1,23 @@
+<center><h2>Create article</h2>
+
+  <%= form_for(@article) do |a| %>
+      <% if @article.errors.present? %>
+          <div class="alert alert-error fade in">
+            <ul>
+              <h4><%= @article.errors.count > 1  ? "You have #{@article.errors.count} errors" : "You have #{@article.errors.count} error"%></h4>
+              <% @article.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <div><%= a.label :title, "Title" %><br />
+        <%= a.text_field :title, :autofocus => true %></div>
+
+      <div><%= a.label :text %>
+        <%= a.cktext_area :text, :cols => 40, :ckeditor => {:toolbar => "mini"} %></div>
+
+      <div><%= a.submit "Create" %></div>
+  <% end %>
+</center>
