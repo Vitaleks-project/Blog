@@ -1,2 +1,7 @@
 <h4><%= @article.title %></h4>
+<% if @article.image? %>
+    <%= image_tag @article.image, :size => '200x200' %>
+<% else %>
+    <%= image_tag ("no.png"),  :size => '200x200' %>
+<% end %><br/>
 <%= @article.text.html_safe %>

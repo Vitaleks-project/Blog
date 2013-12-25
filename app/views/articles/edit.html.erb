@@ -1,4 +1,4 @@
-<center><h2>Create article</h2>
+<center><h2>Edit article</h2>
 
   <%= form_for(@article) do |a| %>
       <% if @article.errors.present? %>
@@ -21,6 +21,6 @@
       <div><%= a.label :image %><br />
         <%= a.file_field :image %></div>
 
-      <div><%= a.submit "Create" %></div>
+      <div><%= a.submit "Update" %></div>
   <% end %>
 </center>

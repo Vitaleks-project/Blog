@@ -33,7 +33,7 @@
             <td><%= a.created_at.to_date %></td>
             <td>
               <%= link_to " Disaproved", article_path(a, :approved => false), :method => :put if a.approved == true %>
-              <%= link_to " Edit", edit_news_path(a) %>
+              <%= link_to " Edit", edit_article_path(a) %>
               <%= link_to "Delete", a, method: :delete,
                           data: { confirm: "You sure?" } %>
             </td>

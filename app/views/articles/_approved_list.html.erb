@@ -1,11 +1,17 @@
 <div class="mini-header-left-panel">
   <p>Article:</p>
 </div>
-  <% Article.find_all_by_approved(true).last(10).each do |a| %>
-      <div style="padding: 1% 2%">
-        <li>
-          <%= link_to a.title, a %>
-        </li>
+  <% Article.find_all_by_approved(true).last(5).each do |a| %>
+      <div style="width: 100%">
+          <% if a.image? %>
+            <%= image_tag a.image, :size => "30x30" %>
+          <% else %>
+              <%= image_tag ('no.png'), :size => "30x30" %>
+          <% end %>
       </div>
-      <br/>
+    <div style="margin-left: 15%; margin-top: -10%">
+    <%= link_to a.title, a %>
+    <p class="muted"> <%= a.updated_at.to_date %></p>
+    </div>
+    <hr/>
   <% end %>
