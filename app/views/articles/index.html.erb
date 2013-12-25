@@ -1,4 +1,6 @@
-<%= render 'layouts/header_admin' %>
+<div class="admin-link">
+    <%= link_to 'New article', new_article_path, :class => 'right btn btn-small' %>
+</div>
 <% if @articles.present? %>
     <div style="padding: 1%">
       <% if !params[:disapproved] %>

@@ -20,7 +20,14 @@
         <ul class="nav pull-right">
           <% if user_signed_in? || admin_signed_in? %>
             <% if admin_signed_in? %>
-              <li><a href="/home">Admin page</a></li>
+              <li><%= link_to 'Posts', posts_path %></li>
+              <li><%= link_to 'Clubs', clubs_path %></li>
+              <li><%= link_to 'Users', users_path %></li>
+              <li><%= link_to 'Games', games_path %></li>
+              <li><%= link_to 'Admins', home_path %></li>
+              <li><%= link_to 'Injureds', injureds_path %></li>
+              <li><%= link_to 'Another news', news_index_path %></li>
+              <li><%= link_to 'Article', articles_path  %></li>
             <% end %>
             <li><%= link_to 'Add your Article', new_article_path if !admin_signed_in? %></li>
             <li><%= link_to "#{current_user.name || current_user.email}", current_user unless admin_signed_in? %></li>

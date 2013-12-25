@@ -1,4 +1,6 @@
-<%= render 'layouts/header_admin' %>
+<div class="admin-link">
+  <%= link_to 'New news', new_news_path, :class => 'right btn btn-small' %>
+</div>
 <% if @news.present? %>
     <h4 class="left">All another news:</h4>
     <div><%= will_paginate @injureds, :class => 'right' %></div>

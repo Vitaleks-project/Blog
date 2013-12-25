@@ -1,4 +1,6 @@
-<%= render 'layouts/header_admin' %>
+<div class="admin-link">
+    <%= link_to 'New game', new_game_path, :class => 'right btn btn-small' %>
+</div>
 <div style="padding-top:8%">
     <% if @games.present? %>
         <% @games.each do |game| %>

@@ -1,4 +1,6 @@
-<%= render 'layouts/header_admin' %>
+<div class="admin-link">
+  <%= link_to 'New posts', new_post_path, :class => 'right btn btn-small' %>
+</div>
 <div style="padding-top: 2%">
   <%= form_tag posts_path, :method => 'get' do %>
       <%= text_field_tag :search, nil, :placeholder => "Search posts..." %>

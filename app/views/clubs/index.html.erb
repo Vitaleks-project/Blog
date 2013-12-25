@@ -1,5 +1,7 @@
-<%= render 'layouts/header_admin' %>
-<div style="padding-top: 2%">
+<div class="admin-link">
+  <%= link_to 'New club', new_club_path, :class => 'right btn btn-small' %>
+</div>
+<div style="padding-top: 1%">
   <%= form_tag clubs_path, :method => 'get' do %>
       <%= text_field_tag :search, nil, :placeholder => "Search clubs..." %>
       <div class="btn-group" style="margin-top: -10px;">
