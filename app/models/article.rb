@@ -6,4 +6,12 @@ class Article < ActiveRecord::Base
   belongs_to :admin
 
   validates :text, :title, presence: true
+
+  def self.disapproved
+    Article.scoped_by_approved(false)
+  end
+
+  def self.approved
+    Article.scoped_by_approved(true)
+  end
 end

@@ -2,10 +2,14 @@ class ArticlesController < ApplicationController
   before_filter :authenticate_admin!, :except => [:new, :create, :show]
 
   def index
-    @articles = Article.order('created_at DESC').
-                        paginate(:page => params[:page], :per_page => 10)
-
-    @approved_articles = Article.find_all_by_approved(true)
+    if params[:disapproved]
+      @articles = Article.disapproved.
+                          order('created_at DESC').
+                          paginate(:page => params[:page], :per_page => 10)
+    else
+      @articles = Article.order('created_at DESC').
+                          paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   def new

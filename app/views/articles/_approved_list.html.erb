@@ -1,7 +1,7 @@
 <div class="mini-header-left-panel">
   <p>Article:</p>
 </div>
-  <% Article.find_all_by_approved(true).last(5).each do |a| %>
+  <% Article.order('created_at DESC').find_all_by_approved(true).last(5).each do |a| %>
       <div style="width: 100%">
           <% if a.image? %>
             <%= image_tag a.image, :size => "30x30" %>

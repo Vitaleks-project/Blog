@@ -1,7 +1,16 @@
 <%= render 'layouts/header_admin' %>
 <% if @articles.present? %>
+    <div style="padding: 1%">
+      <% if !params[:disapproved] %>
+        <%= form_tag articles_path, :method => 'get' do %>
+            <%= hidden_field_tag :disapproved, nil %>
+            <%= submit_tag "Show disapproved article (#{Article.find_all_by_approved(false).size})", :name => nil, :class=>'btn btn-small' %>
+        <% end %>
+      <% else %>
+        <%= link_to "Show all (#{Article.all.size})", articles_path, :class => 'btn btn-small'%>
+      <% end %>
+    </div>
     <h4 class="left">All articles:</h4>
-    <div><%= will_paginate @articles, :class => 'right' %></div>
     <table class="table table-hover">
       <thead>
       <tr>
