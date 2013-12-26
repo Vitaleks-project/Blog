@@ -1,3 +1,6 @@
+<div class="filter">
+  <%= render 'page/search' %>
+</div>
 <div class="index-container" xmlns="http://www.w3.org/1999/html">
   <% @posts.each do |post| %>
       <div class="post-container">
@@ -19,4 +22,3 @@
       <br/>
   <% end %>
 </div>
-<div class="pagination-posts"><%= will_paginate @posts, :class => 'center' %></div>

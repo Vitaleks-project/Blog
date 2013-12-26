@@ -1,0 +1,10 @@
+<div style="padding-top: 2%">
+  <%= form_tag root_path, :method => 'get' do %>
+      <%= text_field_tag :search, nil, :placeholder => "Search by title..." %>
+      <div class="btn-group" style="margin-top: -10px;">
+        <%= submit_tag "Search", :name => nil, :class=>'btn btn-small' %>
+        <%= link_to 'Reset', root_path, :class=> 'btn btn-small btn-danger' %>
+      </div>
+  <% end %>
+  <%= "Found: #{@posts.count}" if params[:search] %>
+</div>
