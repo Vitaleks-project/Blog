@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_filter :authenticate_admin!, :except => [:new, :create, :show]
+  before_filter :log_impression, :only=> [:show]
 
   def index
     if params[:disapproved]
@@ -18,6 +19,8 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @comment = @article.comments.build
+    @article.comments.pop
   end
 
   def edit
@@ -62,5 +65,16 @@ class ArticlesController < ApplicationController
   def destroy
     Article.find(params[:id]).destroy
     redirect_to articles_path
+  end
+
+  def log_impression
+    @article = Article.find(params[:id])
+    if admin_signed_in?
+      @article.impressions.create(ip_address: request.remote_ip, user_id: current_admin.id)
+    elsif user_signed_in?
+      @article.impressions.create(ip_address: request.remote_ip, user_id: current_user.id)
+    elsif(!user_signed_in? || !admin_signed_in?)
+      @article.impressions.create(ip_address: nil, user_id: nil)
+    end
   end
 end

@@ -5,3 +5,27 @@
     <%= image_tag ("no.png"),  :size => '200x200' %>
 <% end %><br/>
 <%= @article.text.html_safe %>
+
+<%  for comment in @article.comments  %>
+    <div class="well well-small">
+      <div class="right"><%= link_to "Delete", comment, :class => 'right', method: :delete,
+                                     data: { confirm: "You sure?" } if current_admin %></div>
+      <%= comment.comment %>
+      <div class="right muted">
+        <%= comment.created_at.to_date %>
+      </div>
+    </div>
+<% end %>
+
+<% if user_signed_in? %>
+    <% if banned == false %>
+        <%= render 'comments/form' %>
+    <% elsif(banned == true) %>
+        <div class="banned">
+          <h4>Sorry, your account is BANNED! You can not add comments.</h4>
+        </div>
+    <% end %>
+<% elsif(admin_signed_in?) %>
+    <%= render 'comments/form' %>
+<% end %>
+

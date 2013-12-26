@@ -11,7 +11,11 @@
       </div>
     <div style="margin-left: 15%; margin-top: -10%">
     <%= link_to a.title, a %>
-    <p class="muted"> <%= a.updated_at.to_date %></p>
+    <p class="muted">
+      <%= a.updated_at.to_date %>
+      Comments: <%= a.comments.size %>
+      Review: <%= a.unique_impression_count.size %>
+    </p>
     </div>
     <hr/>
   <% end %>

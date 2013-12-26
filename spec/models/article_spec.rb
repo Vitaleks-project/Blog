@@ -24,4 +24,28 @@ describe Article do
     end
   end
 
+  it 'Impressions count' do
+    article = FactoryGirl.create(:article)
+    assert_equal 0, article.impression_count
+  end
+
+  it 'Log impression' do
+    @article = FactoryGirl.create(:article)
+    @user = FactoryGirl.create(:user)
+    @admin = FactoryGirl.create(:admin)
+
+    assert_equal [], @article.impressions
+
+    @article.impressions.create(:ip_address => '127.0.0.1', :user_id => @user.id)
+    assert_equal 1, @article.impressions.size
+
+    @article.impressions.create(:ip_address => '127.0.0.1', :user_id => @admin.id)
+    assert_equal 2, @article.impressions.size
+
+    @article.impressions.create(:ip_address => '127.0.0.2', :user_id => nil)
+    assert_equal 3, @article.impressions.size
+
+    assert_equal 2, @article.unique_impression_count.size
+  end
+
 end
