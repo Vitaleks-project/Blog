@@ -1,90 +1,95 @@
 <div class="mini-header-left-panel">
     <p>Games:</p>
 </div>
+<% if !@game1.present? || !@game2.present? || !@game3.present? %>
 <div id="myCarousel" class="carousel slide">
-  <!-- Carousel items -->
-  <div class="carousel-inner">
+    <div class="carousel-inner">
         <div class="active item">
-          <% @game1 = Game.order('created_at')[-1] %>
-          <div class="slides">
-              <% if @game1.location == "Home" %>
-                 <%= @game1.clubs[1].clubname %>
-                 <%= image_tag @game1.clubs[1].logo, :size => '80x80' if @game1.clubs[1].logo.present? %>
-
-                 <%= @game1.clubs[0].clubname %>
-                 <%= image_tag @game1.clubs[0].logo, :size => '80x80' if @game1.clubs[0].logo.present? %>
-              <% elsif(@game1.location == "Away") %>
-                 <%= @game1.clubs[0].clubname %>
-                 <%= image_tag @game1.clubs[0].logo, :size => '80x80' if @game1.clubs[0].logo.present? %>
-
-                 <%= @game1.clubs[1].clubname %>
-                 <%= image_tag @game1.clubs[1].logo, :size => '80x80' if @game1.clubs[1].logo.present? %>
-              <% end %>
-          </div>
-          <div class="carousel-caption">
-            <p>
-              <%= @game1.kind %>
-              <br/>
-              <%= @game1.date %>
-              (<%= @game1.location %>)
-            </p>
-          </div>
+            <% @game1 = Game.order('created_at')[-1] %>
+            <div class="slides">
+                <div class="info-game">
+                    <%= @game1.kind %><br/>
+                    <%= @game1.date %>
+                </div>
+                <% if @game1.location == "Home" %>
+                    <div class = "clubname-club-game">
+                        <%= @game1.clubs[1].clubname %><br/>
+                        <%= @game1.clubs[0].clubname %>
+                    </div>
+                    <div class="logo-club-game">
+                        <%= image_tag @game1.clubs[0].logo, :size => '60x60' if @game1.clubs[0].logo.present? %>
+                    </div>
+                <% elsif(@game1.location == "Away") %>
+                    <div class="logo-club-game">
+                        <%= image_tag @game1.clubs[0].logo, :size => '60x60' if @game1.clubs[0].logo.present? %>
+                    </div>
+                    <div class="clubname-club-game">
+                        <%= @game1.clubs[0].clubname %><br/>
+                        <%= @game1.clubs[1].clubname %>
+                    </div>
+                <% end %>
+            </div>
         </div>
+
         <div class="item">
-          <% @game2 = Game.order('created_at')[-2] %>
-          <div class="slides">
-              <% if @game2.location == "Home" %>
-                 <%= @game2.clubs[1].clubname %>
-                 <%= image_tag @game2.clubs[1].logo, :size => '80x80' if @game2.clubs[1].logo.present? %>
-
-                 <%= @game2.clubs[0].clubname %>
-                 <%= image_tag @game2.clubs[0].logo, :size => '80x80' if @game2.clubs[0].logo.present? %>
-              <% elsif(@game2.location == "Away") %>
-                 <%= @game2.clubs[0].clubname %>
-                 <%= image_tag @game2.clubs[0].logo, :size => '80x80' if @game2.clubs[0].logo.present? %>
-
-                 <%= @game2.clubs[1].clubname %>
-                 <%= image_tag @game2.clubs[1].logo, :size => '80x80' if @game2.clubs[1].logo.present? %>
-              <% end %>
-          </div>
-          <div class="carousel-caption">
-            <p>
-              <%= @game2.kind %>
-              <br/>
-              <%= @game2.date %>
-              (<%= @game2.location %>)
-            </p>
-          </div>
+            <% @game2 = Game.order('created_at')[-2] %>
+            <div class="slides">
+                <div class="info-game">
+                    <%= @game2.kind %><br/>
+                    <%= @game2.date %>
+                </div>
+                <% if @game2.location == "Home" %>
+                    <div class="clubname-club-game">
+                        <%= @game2.clubs[1].clubname  %><br/>
+                        <%= @game2.clubs[0].clubname  %>
+                    </div>
+                    <div class="logo-club-game">
+                        <%= image_tag @game2.clubs[0].logo, :size => '60x60' if @game2.clubs[0].logo.present? %>
+                    </div>
+                <% elsif(@game2.location == "Away") %>
+                    <div class="logo-club-game">
+                        <%= image_tag @game2.clubs[0].logo, :size => '60x60' if @game2.clubs[0].logo.present? %>
+                    </div>
+                    <div class="clubname-club-game">
+                        <%= @game2.clubs[0].clubname %><br/>
+                        <%= @game2.clubs[1].clubname %>
+                    </div>
+                <% end %>
+            </div>
         </div>
-        <div class="item">
-          <% @game3 = Game.order('created_at')[-3] %>
-          <div class="slides">
-              <% if @game3.location == "Home" %>
-                 <%= @game3.clubs[1].clubname %>
-                 <%= image_tag @game3.clubs[1].logo, :size => '80x80' if @game3.clubs[1].logo.present? %>
 
-                 <%= @game3.clubs[0].clubname %>
-                 <%= image_tag @game3.clubs[0].logo, :size => '80x80' if @game3.clubs[0].logo.present? %>
+        <div class="item">
+            <% @game3 = Game.order('created_at')[-3] %>
+            <div class="slides">
+                <div class="info-game">
+                    <%= @game3.kind %><br/>
+                    <%= @game3.date %>
+                </div>
+                <% if @game3.location == "Home" %>
+                    <div class = "clubname-club-game">
+                        <%= @game3.clubs[1].clubname %><br/>
+                        <%= @game3.clubs[0].clubname %>
+                    </div>
+                    <div class="logo-club-game">
+                        <%= image_tag @game3.clubs[0].logo, :size => '60x60' if @game3.clubs[0].logo.present? %>
+                    </div>
               <% elsif(@game3.location == "Away") %>
-                 <%= image_tag @game3.clubs[0].logo, :size => '80x80' if @game3.clubs[0].logo.present? %>
-                 <%= @game3.clubs[0].clubname %>
-
-                 <%= image_tag @game3.clubs[1].logo, :size => '80x80' if @game3.clubs[1].logo.present? %>
-                 <%= @game3.clubs[1].clubname %>
+                    <div class="logo-club-game">
+                        <%= image_tag @game3.clubs[0].logo, :size => '60x60' if @game3.clubs[0].logo.present? %>
+                    </div>
+                    <div class = "clubname-club-game">
+                        <%= @game3.clubs[0].clubname %><br/>
+                        <%= @game3.clubs[1].clubname %>
+                    </div>
               <% end %>
           </div>
-          <div class="carousel-caption">
-            <p>
-              <%= @game3.kind %>
-              <br/>
-              <%= @game3.date %>
-              (<%= @game3.location %>)
-            </p>
-          </div>
         </div>
-  </div>
-  <div class="center">
-      <a href="#myCarousel" data-slide="prev"><i class="icon-chevron-left"></i></a>
-      <a href="#myCarousel" data-slide="next"><i class="icon-chevron-right"></i></a>
-  </div>
+    </div>
+    <div class="center">
+        <a href="#myCarousel" data-slide="prev"><i class="icon-chevron-left"></i></a>
+        <a href="#myCarousel" data-slide="next"><i class="icon-chevron-right"></i></a>
+    </div>
 </div>
+<% else %>
+    <h4>Game not found...</h4>
+<% end %>
