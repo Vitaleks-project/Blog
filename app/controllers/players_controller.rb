@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  before_filter :authenticate_admin!
+  before_filter :authenticate_admin!, :except => [:show]
   load_and_authorize_resource :club
   load_and_authorize_resource :player, :through => :club
 

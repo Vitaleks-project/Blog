@@ -1,18 +1,1 @@
-<h4><%= @club.clubname %></h4>
-<% if @club.logo? %>
-    <%= image_tag @club.logo,:size => '200x200' %>
-<% else %>
-    <%= image_tag ("no.png"),  :size => '200x200' %>
-<% end %>
-<% if @club.logo_stadium? %>
-    <%= image_tag @club.logo_stadium,:size => '200x200' %>
-<% else %>
-    <%= image_tag ("no.png"),  :size => '200x200' %>
-<% end %> <br/>
-
-Stadium name: <%= @club.stadiumname %><br/>
-Coach: <%= @club.coach %><br/>
-Year of foundation: <%= @club.year_of_foundation %><br/>
-Description: <%= @club.description %><br/>
-<%= render 'clubs/game_list' %>
 <%= render 'players/list' %>
