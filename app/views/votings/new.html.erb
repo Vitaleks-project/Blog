@@ -1,0 +1,20 @@
+<%= form_for @voting do |f| %>
+    <% if @voting.errors.present? %>
+        <div class="alert alert-error fade in">
+          <ul>
+            <h4><%= @voting.errors.count > 1  ? "You have #{@voting.errors.count} errors" : "You have #{@voting.errors.count} error"%></h4>
+            <% @voting.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <p>
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </p>
+    <%= f.fields_for :questions do |builder| %>
+        <%= render "votings/questions", :f => builder %>
+    <% end %>
+    <p><%= f.submit "Submit" %></p>
+<% end %>

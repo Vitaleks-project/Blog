@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131225103040) do
+ActiveRecord::Schema.define(:version => 20140117152017) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(:version => 20131225103040) do
 
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
+
+  create_table "answers", :force => true do |t|
+    t.integer  "question_id"
+    t.string   "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -180,6 +187,13 @@ ActiveRecord::Schema.define(:version => 20131225103040) do
   add_index "posts", ["cached_votes_total"], :name => "index_posts_on_cached_votes_total"
   add_index "posts", ["cached_votes_up"], :name => "index_posts_on_cached_votes_up"
 
+  create_table "questions", :force => true do |t|
+    t.integer  "voting_id"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -234,5 +248,12 @@ ActiveRecord::Schema.define(:version => 20131225103040) do
   add_index "votes", ["votable_id", "votable_type"], :name => "index_votes_on_votable_id_and_votable_type"
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], :name => "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   add_index "votes", ["voter_id", "voter_type"], :name => "index_votes_on_voter_id_and_voter_type"
+
+  create_table "votings", :force => true do |t|
+    t.string   "title"
+    t.integer  "admin_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

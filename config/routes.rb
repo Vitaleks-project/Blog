@@ -10,6 +10,7 @@ Blog::Application.routes.draw do
   resources :games
   resources :news
   resources :injureds
+  resources :votings
 
   get 'tags/:tag', to: 'page#index', as: :tag
 
