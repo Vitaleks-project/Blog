@@ -12,9 +12,9 @@ class VotingsController < ApplicationController
   def new
     @voting = Voting.new
 
-    3.times do
+    1.times do
       question = @voting.questions.build
-      4.times { question.answers.build }
+      2.times { question.answers.build }
     end
   end
 

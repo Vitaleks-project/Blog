@@ -1,4 +1,30 @@
 <div class="admin-link">
   <%= link_to 'New voting', new_voting_path, :class => 'right btn btn-small' %>
 </div>
-<%= Voting.all.size %>
+<h4 class="left">Votings:</h4><br/>
+<% if @votings.present? %>
+    <table class="table table-hover">
+      <tr>
+        <th style="width: 70%">Title</th>
+        <th style="width: 30%">Actions</th>
+      </tr>
+      <% @votings.each do |v| %>
+          <tr>
+            <td><%= v.title %>
+                <ul>
+                  <h5><%= v.questions.first.content %></h5>
+                  <% v.questions.first.answers.each do |c| %>
+                   <li><%= c.content %></li><br/>
+                  <% end %>
+                </ul>
+            </td>
+
+            <td><%= link_to "Show", v %>
+                <%= link_to "Edit", edit_voting_path(v) %>
+                <%= link_to "Destroy", v, :confirm => 'Are you sure?', :method => :delete %></td>
+          </tr>
+      <% end %>
+    </table>
+<% else %>
+    Votings not found...
+<% end %>
