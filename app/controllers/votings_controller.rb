@@ -7,6 +7,8 @@ class VotingsController < ApplicationController
 
   def show
     @voting = Voting.find(params[:id])
+    @question = @voting.questions.first
+    @answer = @voting.questions.first.answers
   end
 
   def new

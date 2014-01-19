@@ -1,0 +1,10 @@
+<div style="padding: 2%">
+    <h4><%= @question.content %></h4>
+        <% @answer.each do |answer| %>
+            <div id="radio">
+                <%= radio_button_tag "answer[id]", answer.id, {} %>
+                <%= answer.content %><br/>
+            </div>
+  <% end %>
+  <br/>
+</div>

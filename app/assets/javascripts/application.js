@@ -30,6 +30,8 @@ WebFontConfig = {
     s.parentNode.insertBefore(wf, s);
 })();
 
+
+// For create voting
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").value = "1";
     $(link).closest(".fields").hide();

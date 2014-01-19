@@ -19,8 +19,10 @@
                 </ul>
             </td>
 
-            <td><%= link_to "Edit", edit_voting_path(v) %>
-                <%= link_to "Destroy", v, :confirm => 'Are you sure?', :method => :delete %></td>
+            <td>
+              <%= link_to 'Show', v %>
+              <%= link_to "Edit", edit_voting_path(v) %>
+              <%= link_to "Destroy", v, :confirm => 'Are you sure?', :method => :delete %></td>
           </tr>
       <% end %>
     </table>
