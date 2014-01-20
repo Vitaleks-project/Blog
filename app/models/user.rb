@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   acts_as_voter
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :articles
+  has_many :targets, :dependent => :destroy
   validates :email, presence: true
 
   def self.search(search)

@@ -1,14 +1,28 @@
 class VotingsController < ApplicationController
-  before_filter :authenticate_admin!
+  before_filter :authenticate_admin!, :except => [:add_vote]
 
   def index
     @votings = Voting.all
+    @current_voting = Voting.last
+    @answer = @current_voting.questions.first.answers
   end
 
   def show
     @voting = Voting.find(params[:id])
     @question = @voting.questions.first
     @answer = @voting.questions.first.answers
+  end
+
+  def add_vote
+    @selected_answer = Answer.find(params[:answer][:id])
+
+    if user_signed_in?
+      Target.create(:user_id => current_user.id, :answer_id => @selected_answer.id)
+    elsif(admin_signed_in?)
+      Target.create(:admin_id => current_admin.id, :answer_id => @selected_answer.id)
+    end
+
+    redirect_to :back
   end
 
   def new

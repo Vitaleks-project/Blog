@@ -14,4 +14,5 @@ class Admin < ActiveRecord::Base
   has_many :comments, :as => :commentable
   has_many :articles
   has_many :votings
+  has_many :targets
 end

@@ -1,0 +1,22 @@
+<div class="mini-header-left-panel">
+  <p>Voting:</p>
+</div>
+
+<div class="index-voting">
+   <h5><%= Voting.last.title %></h5>
+    <%= form_tag add_vote_votings_path do %>
+        <% Voting.last.questions.first.answers.each do |answer| %>
+            <%= radio_button_tag "answer[id]", answer.id, Voting.last.questions.first.answers.include?(answer) %>
+            <%= answer.content %><br/>
+        <% end %>
+      <%= submit_tag "Vote" %>
+    <% end %>
+</div>
+
+<% if user_signed_in? %>
+    <h5><%= Voting.last.title %></h5>
+    <% Voting.last.questions.first.answers.each do |answer| %>
+        <li><%= answer.content %> (<%= answer.targets.size %>)</li><br/>
+    <% end %>
+    <p class="muted">You are voting!</p>
+<% end %>
