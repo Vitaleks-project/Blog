@@ -15,6 +15,18 @@ module ApplicationHelper
     end
   end
 
+  def current_user_has_vote?
+    current_voting =  Voting.find_last_by_current(true)
+    current_voting_targets_admin = Target.where(admin_id: current_admin.id, voting_id: current_voting.id) if admin_signed_in?
+    current_voting_targets_user = Target.where(user_id: current_user.id, voting_id: current_voting.id) if user_signed_in?
+
+    if(current_voting_targets_admin || current_voting_targets_user).present?
+      return false
+    else
+      return true
+    end
+  end
+
   def banned
     if(user_signed_in?)
       if(current_user.banned == true)

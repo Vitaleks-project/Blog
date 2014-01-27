@@ -5,7 +5,8 @@
 <% if @votings.present? %>
     <table class="table table-hover">
       <tr>
-        <th style="width: 70%">Title</th>
+        <th style="width: 40%">Title</th>
+        <th style="width: 30%">Set current:</th>
         <th style="width: 30%">Actions</th>
       </tr>
       <% @votings.each do |v| %>
@@ -18,7 +19,12 @@
                   <% end %>
                 </ul>
             </td>
-
+            <td><% if v.current == false %>
+                  <%= link_to 'Set current',  voting_path(v, :current => true), :method => :put %>
+                <% elsif(v.current == true) %>
+                  <%= link_to 'Off current',  voting_path(v, :current => false), :method => :put %>
+                <% end %>
+            </td>
             <td>
               <%= link_to 'Show', v %>
               <%= link_to "Edit", edit_voting_path(v) %>

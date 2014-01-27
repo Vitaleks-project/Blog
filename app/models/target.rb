@@ -4,4 +4,6 @@ class Target < ActiveRecord::Base
   belongs_to :user
   belongs_to :answer
   belongs_to :voting
+
+  validates :answer_id, presence: true
 end

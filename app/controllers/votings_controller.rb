@@ -3,8 +3,6 @@ class VotingsController < ApplicationController
 
   def index
     @votings = Voting.all
-    @current_voting = Voting.last
-    @answer = @current_voting.questions.first.answers
   end
 
   def show
@@ -14,12 +12,13 @@ class VotingsController < ApplicationController
   end
 
   def add_vote
+    @current_voting = Voting.find_last_by_current(true)
     @selected_answer = Answer.find(params[:answer][:id])
 
     if user_signed_in?
-      Target.create(:user_id => current_user.id, :answer_id => @selected_answer.id)
+      Target.create(:user_id => current_user.id, :answer_id => @selected_answer.id, :voting_id => @current_voting.id)
     elsif(admin_signed_in?)
-      Target.create(:admin_id => current_admin.id, :answer_id => @selected_answer.id)
+      Target.create(:admin_id => current_admin.id, :answer_id => @selected_answer.id, :voting_id => @current_voting.id)
     end
 
     redirect_to :back
@@ -51,6 +50,8 @@ class VotingsController < ApplicationController
 
   def update
     @voting = Voting.find(params[:id])
+    params[:voting] ||= {}
+    params[:voting][:current] = params[:current] if params[:current]
     if @voting.update_attributes(params[:voting])
       flash[:notice] = "Successfully updated voting."
       redirect_to votings_path
@@ -60,7 +61,8 @@ class VotingsController < ApplicationController
   end
 
   def destroy
-    @voting = Voting.find(params[:id]).destroy
+    @voting = Voting.find(params[:id])
+    @voting.destroy
     flash[:notice] = "Successfully destroyed voting."
     redirect_to voting_path
   end
