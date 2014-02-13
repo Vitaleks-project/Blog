@@ -1,24 +1,40 @@
 <div class="mini-header-left-panel">
   <p>Voting:</p>
 </div>
-<% if Voting.find_last_by_current(true).present? %>
-     <% if current_user_has_vote? %>
-        <div class="index-voting">
-           <h5><%= Voting.find_last_by_current(true).title %></h5>
-            <%= form_tag add_vote_votings_path do %>
-                <% Voting.find_last_by_current(true).questions.first.answers.each do |answer| %>
-                    <%= radio_button_tag "answer[id]", answer.id, Voting.last.questions.first.answers.include?(answer) %>
-                    <%= answer.content %><br/>
+<div style="padding: 1%">
+    <% if Voting.find_last_by_current(true).present? %>
+         <% if current_user_has_vote? %>
+            <div class="index-voting">
+               <h5><%= Voting.find_last_by_current(true).questions.last.content %></h5>
+                <%= form_tag add_vote_votings_path do %>
+                    <% Voting.find_last_by_current(true).questions.first.answers.each do |answer| %>
+                        <%= radio_button_tag "answer[id]", answer.id, Voting.last.questions.first.answers.include?(answer) %>
+                        <%= answer.content %><br/>
+                    <% end %>
+                  <% if user_signed_in? || admin_signed_in? %>
+                    <%= submit_tag "Vote" %>
+                  <% else %>
+                    <p style="padding: 1%">
+                      If you want voting you must sign in or sign up
+                    </p>
+                  <% end %>
                 <% end %>
-              <%= submit_tag "Vote" %>
-            <% end %>
-        </div>
-     <% else %>
-        <h5><%= Voting.find_last_by_current(true).title %></h5>
-            <% Voting.find_last_by_current(true).questions.first.answers.each do |answer| %>
-                <%= answer.content %> (<%= answer.targets.size %>)<br/>
-            <% end %>
-            <h6>You are voting...</h6>
-     <% end %>
-<% end %>
+            </div>
+         <% else %>
+            <h5><%= Voting.find_last_by_current(true).questions.last.content %></h5>
+                <% Voting.find_last_by_current(true).questions.first.answers.each do |answer| %>
+                    <%= answer.content %> (<%= answer.targets.size %>)
+                      <% if answer.targets.size == 0 %>
+                          % 0.0
+                      <% else %>
+                          % <%= Voting.percentage_off %>
+                      <% end %>
+                    <br/>
+                <% end %>
+
+            Total number votes: <%= Voting.voting_targets_size %>
+                <h6>You are voting...</h6>
+         <% end %>
+    <% end %>
+</div>
 
