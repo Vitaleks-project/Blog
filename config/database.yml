@@ -1,0 +1,18 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: manchester_dev
+  host: localhost
+  pool: 5
+  username: vitaleks
+  password: manchesterutd
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: manchester_test
+  host: localhost
+  pool: 5
+  username: vitaleks
+  password: manchesterutd
