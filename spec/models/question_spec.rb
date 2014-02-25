@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe Question do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to(:voting) }
+  it { should have_many(:answers) }
+
+  it { should validate_presence_of(:content) }
+  it { should validate_presence_of(:voting_id) }
 end

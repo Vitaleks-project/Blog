@@ -1,8 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :answer do
-    question_id 1
-    content "MyString"
+  factory :voting do
+    title "My Voting"
+    admin_id 1
+    current false
   end
 end

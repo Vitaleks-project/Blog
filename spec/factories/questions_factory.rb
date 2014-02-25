@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :question do
     voting_id 1
-    content "MyString"
+    content "Questions?"
   end
 end

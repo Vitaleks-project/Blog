@@ -4,6 +4,7 @@ class Voting < ActiveRecord::Base
   has_many :targets, :dependent => :destroy
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 
+  validates :admin_id, :title, :presence => true
 
   def self.voting_targets_size
     Voting.find_last_by_current(true).targets.size
