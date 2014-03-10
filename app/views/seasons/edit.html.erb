@@ -1,0 +1,18 @@
+<h4>Edit season:</h4>
+<%= form_for @season do |s| %>
+    <% if @season.errors.present? %>
+        <div class="alert alert-error fade in">
+          <ul>
+            <h4><%= @season.errors.count > 1  ? "You have #{@season.errors.count} errors" : "You have #{@season.errors.count} error"%></h4>
+            <% @season.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <p>
+      <%= s.label :title %>
+      <%= s.text_field :title %>
+    </p>
+    <p><%= s.submit "Update" %></p>
+<% end %>

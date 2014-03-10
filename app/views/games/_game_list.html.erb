@@ -1,0 +1,24 @@
+<div style="padding-top:8%">
+  <% if @season.games.present? %>
+      <% @season.games.each do |game| %>
+          <div class="center" style="padding: 1%">
+            <div class="left">
+              <%= game.date %>
+              (<%= game.location %>)
+            </div>
+            <% if game.location == "Home" %>
+                <%= game.clubs[1].clubname %>
+                <%= game.clubs[0].clubname %>
+            <% elsif(game.location == "Away") %>
+                <%= game.clubs[0].clubname %>
+                <%= game.clubs[1].clubname %>
+            <% end %>
+            <div class="right">
+              <%= link_to "Edit ", edit_season_game_path(@season, game) %>
+              <%= link_to "Delete", season_game_path(@season, game), method: :delete, data: { confirm: "You sure?" } %></div>
+          </div>
+      <% end %>
+  <% else %>
+      <h4 class="center">Games not found...</h4>
+  <% end %>
+</div>

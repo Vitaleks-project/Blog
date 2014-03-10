@@ -1,5 +1,7 @@
 class GamesController < ApplicationController
   before_filter :authenticate_admin!
+  load_and_authorize_resource :season
+  load_and_authorize_resource :game, :through => :season
 
   def index
     @games = Game.order("created_at DESC").all
@@ -14,28 +16,28 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new(params[:game])
     @game.admin_id = current_admin.id
-    if @game.save
-      flash[:success] = "Game created!"
-      redirect_to games_path
-    else
-      render 'new'
+    respond_to do |format|
+      if @game.save
+        format.html { redirect_to [@season], notice: 'Game created!' }
+      else
+        format.html { render action: "new" }
+      end
     end
   end
 
   def update
-    @game = Game.find(params[:id])
-    if @game.update_attributes(params[:game])
-      flash[:success] = "Game updated."
-      redirect_to games_path
-    else
-      render 'edit'
+    respond_to do |format|
+      if @game.update_attributes(params[:game])
+        format.html { redirect_to [@season], notice: "Game for was successfully updated." }
+      else
+        format.html { render action: "edit" }
+      end
     end
   end
 
   def destroy
     Game.find(params[:id]).destroy
-    redirect_to games_path
+    redirect_to :back
   end
 end

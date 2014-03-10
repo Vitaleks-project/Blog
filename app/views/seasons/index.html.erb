@@ -1,0 +1,24 @@
+<div class="admin-link">
+  <%= link_to 'New season', new_season_path, :class => 'right btn btn-small' %>
+</div>
+
+<h4 class="left">Season:</h4><br/>
+<% if @seasons.present? %>
+    <table class="table table-hover">
+      <tr>
+        <th style="width: 70%">Title:</th>
+        <th style="width: 30%">Actions:</th>
+      </tr>
+      <% @seasons.each do |s| %>
+          <tr>
+            <td><%= s.title %></td>
+            <td>
+              <%= link_to 'Show', s %>
+              <%= link_to "Edit", edit_season_path(s) %>
+              <%= link_to "Destroy", s, :confirm => 'Are you sure?', :method => :delete %></td>
+          </tr>
+      <% end %>
+    </table>
+<% else %>
+    Seasons not found...
+<% end %>

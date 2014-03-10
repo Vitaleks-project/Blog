@@ -7,9 +7,11 @@ Blog::Application.routes.draw do
 
   resources :articles
   resources :users
-  resources :games
   resources :news
   resources :injureds
+  resources :seasons do
+    resources :games
+  end
 
   resources :votings do
     collection do

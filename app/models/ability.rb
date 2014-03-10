@@ -7,6 +7,8 @@ class Ability
       can :manage, User
       can :manage, Club
       can :manage, Player
+      can :manage, Game
+      can :manage, Season
     end
   end
 end

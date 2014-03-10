@@ -1,6 +1,6 @@
 <%= render "layouts/datepicker" %>
 <div class="center"><h2>Create game</h2></div>
-<%= form_for(@game) do |game| %>
+<%= form_for [@season, @game] do |game| %>
     <% if @game.errors.present? %>
         <div class="alert alert-error fade in">
           <ul>

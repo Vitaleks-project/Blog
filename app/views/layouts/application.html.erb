@@ -20,11 +20,11 @@
         <ul class="nav pull-right">
           <% if user_signed_in? || admin_signed_in? %>
             <% if admin_signed_in? %>
+              <li><%= link_to 'Seasons', seasons_path %></li>
               <li><%= link_to 'Votings', votings_path %></li>
               <li><%= link_to 'Posts', posts_path %></li>
               <li><%= link_to 'Clubs', clubs_path %></li>
               <li><%= link_to 'Users', users_path %></li>
-              <li><%= link_to 'Games', games_path %></li>
               <li><%= link_to 'Admins', home_path %></li>
               <li><%= link_to 'Injureds', injureds_path %></li>
               <li><%= link_to 'Another news', news_index_path %></li>

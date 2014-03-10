@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140124134429) do
+ActiveRecord::Schema.define(:version => 20140310140443) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20140124134429) do
     t.integer  "club_ids"
     t.string   "date"
     t.string   "kind"
+    t.integer  "season_id"
   end
 
   create_table "impressions", :force => true do |t|
@@ -190,6 +191,22 @@ ActiveRecord::Schema.define(:version => 20140124134429) do
   create_table "questions", :force => true do |t|
     t.integer  "voting_id"
     t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "seasons", :force => true do |t|
+    t.string   "title"
+    t.integer  "admin_id"
+    t.integer  "game_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tables", :force => true do |t|
+    t.integer  "admin_id"
+    t.integer  "club_id"
+    t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
