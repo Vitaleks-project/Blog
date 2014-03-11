@@ -2,6 +2,7 @@ class Club < ActiveRecord::Base
   attr_accessible :clubname, :coach, :description, :logo,
                   :logo_stadium, :stadiumname, :uniq_title, :year_of_foundation, :admin_id, :country
   belongs_to :admin
+  belongs_to :club_statistic
   has_many :players, :dependent => :destroy
   has_and_belongs_to_many :games
 

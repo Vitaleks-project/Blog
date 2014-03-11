@@ -27,6 +27,8 @@ class GamesController < ApplicationController
   end
 
   def update
+    params[:game] ||= {}
+    params[:game][:done] = params[:done] if params[:done]
     respond_to do |format|
       if @game.update_attributes(params[:game])
         format.html { redirect_to [@season], notice: "Game for was successfully updated." }

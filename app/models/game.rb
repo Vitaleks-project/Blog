@@ -1,7 +1,8 @@
 class Game < ActiveRecord::Base
-  attr_accessible :admin_id, :location, :club_ids, :date, :kind
+  attr_accessible :admin_id, :location, :club_ids, :date, :kind, :done
   belongs_to :admin
   belongs_to :season
+  belongs_to :club_statistic
   validates :admin_id, :location, :date, :season_id, :kind, :presence => true
   has_and_belongs_to_many :clubs
 

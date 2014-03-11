@@ -14,6 +14,12 @@
                 <%= game.clubs[1].clubname %>
             <% end %>
             <div class="right">
+              <td><% if game.done == false %>
+                    <%= link_to 'Done',  season_game_path(@season, game, :done => true), :method => :put %>
+                  <% elsif game.done == true %>
+                    <span class="label label-success">Done</span>
+                  <% end %>
+              </td>
               <%= link_to "Edit ", edit_season_game_path(@season, game) %>
               <%= link_to "Delete", season_game_path(@season, game), method: :delete, data: { confirm: "You sure?" } %></div>
           </div>

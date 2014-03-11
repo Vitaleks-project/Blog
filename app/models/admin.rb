@@ -15,4 +15,5 @@ class Admin < ActiveRecord::Base
   has_many :articles
   has_many :votings
   has_many :targets
+  has_many :club_statistics
 end

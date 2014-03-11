@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140310140443) do
+ActiveRecord::Schema.define(:version => 20140311134709) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
@@ -66,6 +66,24 @@ ActiveRecord::Schema.define(:version => 20140310140443) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
+  create_table "club_statistics", :force => true do |t|
+    t.integer  "season_id"
+    t.integer  "admin_id"
+    t.integer  "club_id"
+    t.integer  "win"
+    t.integer  "draw"
+    t.integer  "lost"
+    t.integer  "played_games"
+    t.integer  "points"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "club_statistics_seasons", :id => false, :force => true do |t|
+    t.integer "club_statistic_id"
+    t.integer "season_id"
+  end
+
   create_table "clubs", :force => true do |t|
     t.string   "clubname"
     t.string   "stadiumname"
@@ -104,12 +122,13 @@ ActiveRecord::Schema.define(:version => 20140310140443) do
   create_table "games", :force => true do |t|
     t.string   "location"
     t.integer  "admin_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "club_ids"
     t.string   "date"
     t.string   "kind"
     t.integer  "season_id"
+    t.boolean  "done",       :default => false
   end
 
   create_table "impressions", :force => true do |t|
