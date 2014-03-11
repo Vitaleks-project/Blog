@@ -1,5 +1,5 @@
 class SeasonsController < ApplicationController
-  before_filter :authenticate_admin!, :except => [:show]
+  before_filter :authenticate_admin!, :except => [:show, :index]
 
   def index
     @seasons = Season.all

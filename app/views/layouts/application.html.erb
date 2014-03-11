@@ -20,7 +20,6 @@
         <ul class="nav pull-right">
           <% if user_signed_in? || admin_signed_in? %>
             <% if admin_signed_in? %>
-              <li><%= link_to 'Seasons', seasons_path %></li>
               <li><%= link_to 'Votings', votings_path %></li>
               <li><%= link_to 'Posts', posts_path %></li>
               <li><%= link_to 'Clubs', clubs_path %></li>
@@ -30,6 +29,7 @@
               <li><%= link_to 'Another news', news_index_path %></li>
               <li><%= link_to 'Article', articles_path  %></li>
             <% end %>
+            <li><%= link_to 'Seasons', seasons_path %></li>
             <li><%= link_to 'Manchester United', club_path(1) %></li>
             <li><%= link_to 'Add your Article', new_article_path if !admin_signed_in? %></li>
             <li><%= link_to "#{current_user.name || current_user.email}", current_user unless admin_signed_in? %></li>

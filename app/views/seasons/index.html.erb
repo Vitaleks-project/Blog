@@ -11,9 +11,8 @@
       </tr>
       <% @seasons.each do |s| %>
           <tr>
-            <td><%= s.title %></td>
+            <td><%=link_to s.title, s %></td>
             <td>
-              <%= link_to 'Show', s %>
               <%= link_to "Edit", edit_season_path(s) %>
               <%= link_to "Destroy", s, :confirm => 'Are you sure?', :method => :delete %></td>
           </tr>
